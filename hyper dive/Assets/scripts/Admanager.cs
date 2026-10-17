@@ -1,3 +1,4 @@
+#if HD_ADS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -113,3 +114,31 @@ public class Admanager : MonoBehaviour
     }
 
 }
+#else
+using UnityEngine;
+using UnityEngine.UI;
+
+// Ads disabled (HD_ADS not defined): stub keeps scene references and button hooks valid.
+public class Admanager : MonoBehaviour
+{
+    public static Admanager instance;
+    public GameObject startAfterAd;
+    public GameObject gameOverPanalEnd;
+    public Text adStatus;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
+
+    public void RequestRewardedAd() { }
+
+    public void showRewardAd()
+    {
+        Debug.Log("Ads disabled: granting reward without an ad");
+        gameOverPanalEnd.SetActive(false);
+        startAfterAd.SetActive(true);
+    }
+}
+#endif

@@ -109,3 +109,12 @@ Library/**/*.dat
 Library/**/*.bin
 Library/**/*.mdb
 Library/**/*.resource
+
+# Unity generated folders inside the project subfolder
+/hyper\ dive/[Ll]ibrary/
+/hyper\ dive/[Tt]emp/
+/hyper\ dive/[Oo]bj/
+/hyper\ dive/[Bb]uild/
+/hyper\ dive/[Bb]uilds/
+/hyper\ dive/[Ll]ogs/
+/hyper\ dive/[Uu]ser[Ss]ettings/

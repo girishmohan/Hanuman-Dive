@@ -1,3 +1,4 @@
+#if HD_ADS
 using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
@@ -112,3 +113,31 @@ public class Admob : MonoBehaviour
 	}
 
 }
+#else
+using UnityEngine;
+using UnityEngine.UI;
+
+// Ads disabled (HD_ADS not defined): stub keeps scene references and button hooks valid.
+public class Admob : MonoBehaviour
+{
+	public GameObject startAfterAd;
+	public GameObject gameOverPanalEnd;
+	public GameObject loadingScreen;
+	public GameObject faildToLoad;
+
+	[SerializeField] Button BtnReward;
+	[SerializeField] Button quit;
+	[SerializeField] Button restart;
+
+	public void RequestRewardAd () { }
+	public void ShowRewardAd () { }
+
+	public void OnGetMorePointsClicked ()
+	{
+		Debug.Log("Ads disabled: granting reward without an ad");
+		gameOverPanalEnd.SetActive(false);
+		startAfterAd.SetActive(true);
+		loadingScreen.SetActive(false);
+	}
+}
+#endif
