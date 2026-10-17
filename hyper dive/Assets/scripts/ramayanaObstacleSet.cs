@@ -12,12 +12,18 @@ using UnityEngine;
 /// </summary>
 public class ramayanaObstacleSet : MonoBehaviour
 {
+    [Tooltip("Camera that shows gameplay. If empty, uses the camera tagged AniCam (this scene's gameplay camera) or Camera.main.")]
+    public Camera gameCamera;
+
     [Header("When to spawn")]
     [Tooltip("Chapter index (in chapterManager) during which this set spawns. 1 = The Great Leap.")]
     public int chapterIndex = 1;
     [Tooltip("Ignore chapters and always spawn (handy for playtesting).")]
     public bool alwaysSpawn = false;
     public float secondsBetweenSpawns = 2.5f;
+
+    [Tooltip("Half-width of the playable channel (world units). Hazards stay inside it.")]
+    public float playAreaHalfWidth = 4.5f;
 
     [Header("Movement")]
     public float riseSpeed = 14f;
@@ -58,10 +64,11 @@ public class ramayanaObstacleSet : MonoBehaviour
         if (timer > 0f) return;
         timer = secondsBetweenSpawns;
 
-        Camera cam = Camera.main;
+        Camera cam = GameCamera();
         if (cam == null) return;
 
-        float halfWidth = cam.orthographicSize * cam.aspect;
+        float camHalfWidth = cam.orthographicSize * cam.aspect;
+        float halfWidth = Mathf.Min(camHalfWidth, playAreaHalfWidth);
         float spawnY = cam.transform.position.y - cam.orthographicSize - 1.5f;
         float centerX = cam.transform.position.x;
 
@@ -76,11 +83,21 @@ public class ramayanaObstacleSet : MonoBehaviour
 
         switch (pattern)
         {
-            case 0: SpawnSurasa(centerX, spawnY, halfWidth); break;
+            case 0: SpawnSurasa(centerX, spawnY, halfWidth, camHalfWidth); break;
             case 1: SpawnSimhika(centerX, spawnY, halfWidth); break;
             case 2: SpawnRocks(centerX, spawnY, halfWidth); break;
             case 3: SpawnMainaka(centerX, spawnY, halfWidth); break;
         }
+    }
+
+    private Camera GameCamera()
+    {
+        if (gameCamera == null)
+        {
+            GameObject tagged = GameObject.FindGameObjectWithTag("AniCam");
+            gameCamera = tagged != null ? tagged.GetComponent<Camera>() : Camera.main;
+        }
+        return gameCamera;
     }
 
     private bool IsActiveChapter()
@@ -89,11 +106,12 @@ public class ramayanaObstacleSet : MonoBehaviour
         return chapterManager.instance.CurrentChapterIndex == chapterIndex;
     }
 
-    private void SpawnSurasa(float centerX, float y, float halfWidth)
+    private void SpawnSurasa(float centerX, float y, float halfWidth, float camHalfWidth)
     {
-        float left = centerX - halfWidth;
-        float right = centerX + halfWidth;
-        float gapCenter = Random.Range(left + surasaGapWidth, right - surasaGapWidth);
+        // Gap stays inside the channel; the jaws reach the screen edges.
+        float gapCenter = Random.Range(centerX - halfWidth + surasaGapWidth, centerX + halfWidth - surasaGapWidth);
+        float left = centerX - camHalfWidth;
+        float right = centerX + camHalfWidth;
         float gapLeft = gapCenter - surasaGapWidth / 2f;
         float gapRight = gapCenter + surasaGapWidth / 2f;
 

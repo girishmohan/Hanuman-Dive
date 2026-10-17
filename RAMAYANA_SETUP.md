@@ -23,6 +23,7 @@ Optional extras in Unity:
   - Mainaka Peak: gold diamond pickup (+15 energy)
 
   Tick `Always Spawn` to playtest without waiting for the chapter. All damage, speed and colour values are in the Inspector.
+- Placeholder Hanuman: `A-Z_Materials/hanuman/hanuman_placeholder.png`, used by all 10 player skins in `SampleScene`. Regenerate or tweak it with `python3 tools/make_placeholder_hanuman.py`. The menu, start and skin-shop scenes still show the diver. To use real art, replace that PNG with one of the same size and pose (600x600, arms up).
 
 ## Mapping from the original game
 
