@@ -1,284 +1,103 @@
-# Hyper Dive
+# Hanuman: Ramayana Edition
 
-![App Icon](images/appIcon1.png)
+A devotional endless-faller for iOS and Android, built in Unity. Hanuman leaps across the ocean toward Lanka to find Sita, dodging spikes, Surasa's jaws, Simhika's shadow and Ravana's rakshasas, and chanting his way forward on **Rama Naam** energy.
 
-## Overview
-Hyper Dive is a hyper-casual infinite level game built with the Unity game engine. It's an intense cave-diving experience where players control a character falling through deep caverns with increasingly challenging obstacles. The game features vibrant visuals, addictive gameplay, and has achieved over 10,000+ downloads on the App Store.
+<p align="center">
+  <img src="images/menu.png" width="260" alt="Start menu: Hanuman leaping over the temple city">
+  &nbsp;&nbsp;
+  <img src="images/gameplay.png" width="260" alt="Gameplay: Hanuman falling past temple silhouettes toward a rakshasa">
+  &nbsp;&nbsp;
+  <img src="images/forms_shop.png" width="260" alt="FORMS shop with Golden and Sindoor Hanuman">
+</p>
 
-In Hyper Dive, players guide a character falling through endless deep caverns filled with various hazards and collectibles. As the character descends deeper, oxygen levels deplete, requiring players to collect oxygen tanks to stay alive. The deeper the dive, the more challenging it becomes with poison gas and more difficult obstacles appearing. The game employs a one-touch control mechanism where players tap to change direction, making it accessible to gamers of all skill levels while still providing a challenging experience as the difficulty increases over time.
+> Work in progress. This game is a fork of [Hyper Dive](https://github.com/Prajwalvv/Hyper-Dive) by **Prajwalvv**, re-themed around the Ramayana. Full credit for the original game goes to him (see [Credits](#credits)).
 
-## Game Demo
-**Note**: The gameplay video file (`appIntroHyperInsta.mov`) has been excluded from the GitHub repository due to its large size (283 MB). You can download it separately or view it from the original project files.
+## The journey
 
-## Features
-- **Infinite Gameplay**: Procedurally generated caverns that become progressively more challenging the deeper you go
-- **Simple Controls**: Easy to learn, difficult to master one-touch gameplay
-- **Oxygen Management**: Strategic collection of oxygen tanks to survive longer dives
-- **Hazard Avoidance**: Navigate around various obstacles and poison gas zones
-- **Gem Collection**: Gather gems to upgrade your character and abilities
-- **In-App Purchases**: Various gem packages for enhancing gameplay and unlocking content
-- **Reward System**: Watch ads to continue gameplay after failing
-- **Vibrant Visuals**: Colorful cavern-themed graphics with dynamic visual effects
-- **Cross-Platform**: Available on both iOS and Android platforms
-- **Leaderboards**: Compete for the deepest dive with friends and players worldwide
-- **Achievement System**: Complete challenges to earn rewards
-- **Character Customization**: Unlock and upgrade different characters
-- **Optimized Performance**: Smooth gameplay on a wide range of devices
+| Chapter | Distance | Story beat |
+|---|---|---|
+| Kishkindha | 0 m | Hanuman takes Rama's ring |
+| The Great Leap | 150 m | Across the ocean to Lanka |
+| Lanka | 400 m | The golden city of Ravana |
+| Ashoka Vatika | 700 m | The search for Sita |
+| Rakshasa Battle | 1000 m | Hanuman faces Ravana's warriors |
+| Lanka Burns | 1400 m | Fire sweeps through the city |
+| Sanjeevani | 1800 m | The mountain of healing herbs |
+| Victory | 2300 m | Jai Shri Ram |
 
-## Screenshots
+## What's in the game
 
-### Gameplay Screenshots
-![Gameplay](images/Group%2013.png)
-![Gameplay](images/Group%2014.png)
-![Gameplay](images/Group%2015.png)
-![Gameplay](images/Group%2016.png)
+- **Rama Naam energy.** It slowly drains as you fall. Collect saffron **RAM** tablets to refill it; when it hits zero the run ends.
+- **The Great Leap hazards.**
+  - Surasa's Jaws: a wall with a narrow gap to slip through.
+  - Simhika's Shadow: an orb that chases you.
+  - Ocean rocks.
+  - Mainaka Peak: a golden pickup that restores energy.
+- **Rakshasas.** Ravana's demon warriors weave upward toward Hanuman from about 12 seconds into every run.
+- **The original obstacles** are still here: spiked mines, saw blades and canyon walls. The mines hold off for the first 8 seconds.
+- **Eight Hanuman forms** to unlock with gems in the **FORMS** shop.
+- **Ramayana scenery.** A dawn-to-dusk sky with temple gopurams, Lanka towers, palms, lotuses and mountains drifting past.
+- **Original music.** A serene Raag Yaman bansuri over a tanpura drone, as a seamless 73-second loop.
+- **Fits any phone.** It draws edge to edge, and the HUD keeps clear of notches, the Dynamic Island and the home bar.
 
-## Game Mechanics
+![Hanuman's eight forms and the rakshasas](images/cast.png)
 
-### Core Gameplay
-- **Movement System**: Tap to change direction while constantly falling downward
-- **Oxygen Management**: Oxygen depletes over time and must be replenished by collecting oxygen tanks
-- **Hazard Avoidance**: Navigate around obstacles and avoid poison gas zones that appear deeper in the caverns
-- **Gem Collection**: Collect gems throughout the dive to use for upgrades and character customization
-- **Scoring**: Points are earned based on depth reached, gems collected, and obstacles avoided
-- **Difficulty Progression**: Obstacle density and poison gas zones increase as the player descends deeper
-- **Power-ups**: Collect special items for temporary abilities like extra oxygen, invincibility, or gem magnets
+## Controls
 
-### Monetization
-- **In-App Purchases**: Various gem packages available for purchase
-- **Reward Ads**: Watch advertisements to continue after failing or to earn bonus gems
-- **Premium Content**: Special characters and visual effects available through purchases
+| Where | How |
+|---|---|
+| Phone | Drag left or right to steer Hanuman |
+| Unity editor | Drag with the mouse, or use the ← → arrow keys (A / D) |
 
-## Technical Details
+## Open the project
 
-### Project Structure
-- **Assets/**: Contains all game assets
-  - **scripts/**: Core game logic scripts
-  - **prefab/**: Reusable game objects
-  - **resource/**: Textures, models, and other visual assets
-  - **Animation/**: Character and UI animations
-  - **Scenes/**: Different game scenes
-  - **materials/**: Material definitions for game objects
-  - **TextMesh Pro/**: Text rendering system
-  - **GoogleMobileAds/**: Ad integration components
-  - **Plugins/**: Third-party plugins and extensions
+1. Install **Unity 2022.3.62f3** via Unity Hub. On Apple Silicon Macs, install Rosetta 2 too (`softwareupdate --install-rosetta`), because Unity's package manager needs it.
+2. In Unity Hub, choose **Add → Add project from disk** and select the **`hyper dive`** folder inside this repo.
+3. Open `Assets/Scenes/start.unity` for the menu, or `SampleScene.unity` to jump straight into a run.
+4. To see it as a phone, switch the Game view to **Simulator** and pick **Modern iPhone 6.3in (Dynamic Island)**. That profile lives in `Assets/DeviceSimulator/`.
 
-### Key Scripts
-- **move.cs**: Controls character movement, physics, and collision detection during the dive
-- **platformGenerator.cs**: Procedurally generates cavern elements and obstacles
-- **obstacles.cs**: Manages obstacle behavior, patterns, and difficulty scaling as depth increases
-- **scoreManager.cs**: Handles scoring system based on depth, gems, and survival time
-- **shopManager.cs**: Manages in-game store, character upgrades, and inventory
-- **levelManager.cs**: Controls depth progression, oxygen depletion, and poison gas intensity
-- **Admanager.cs & Admob.cs**: Handle ad integration and reward systems
-- **IAPManager.cs**: Manages in-app purchases and store integration
-- **cameraControler.cs**: Controls camera movement, effects, and shake animations
-- **dimond.cs**: Handles collectible gem behavior and effects
-- **heartGemLife.cs**: Manages oxygen tank collection and oxygen level mechanics
+Ads and in-app purchases are switched off for now. Their plugins are parked in `hyper dive/_disabled_monetization/`, and the scripts compile as stubs unless you add the `HD_ADS` / `HD_IAP` scripting defines.
 
-### Design Patterns
-- **Singleton Pattern**: Used for managers like AdManager, IAPManager
-- **Object Pooling**: Implemented for efficient spawning of obstacles and collectibles
-- **Component-Based Architecture**: Game objects are composed of modular components
-- **Event System**: For communication between different game systems
+## Where things live
 
-### Prerequisites
-- Unity 2019.4 LTS or later
-- For iOS deployment:
-  - Xcode 12.0 or later
-  - Apple Developer account
-  - macOS 10.15 or later
-- For Android deployment:
-  - Android Studio
-  - Google Play Developer account
-  - JDK 8 or later
-  - Android SDK API level 21 or higher
+| Area | Files |
+|---|---|
+| Chapters and distance | `scripts/chapterManager.cs` |
+| Ramayana hazards (Surasa, Simhika, rocks, Mainaka) | `scripts/ramayanaObstacleSet.cs` |
+| Rakshasas | `scripts/ramayanaDemons.cs` |
+| Drifting scenery | `scripts/ramayanaBackdrop.cs` |
+| Hanuman, steering, Rama Naam energy | `scripts/move.cs` |
+| Safe-area handling for notches | `scripts/safeAreaFitter.cs` |
+| Setup notes and status | [`RAMAYANA_SETUP.md`](RAMAYANA_SETUP.md) |
 
-### Development Environment Setup
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/hyper-dive.git
-   cd hyper-dive
-   ```
+All paths are under `hyper dive/Assets/`. Everything in the game objects lives on the **RamayanaDirector** object in `SampleScene`, where damage, speed and timing can be tuned in the Inspector.
 
-2. **Open the Project in Unity**
-   - Launch Unity Hub
-   - Click 'Add' and browse to the cloned project directory
-   - Select the project and open it with Unity 2019.4 LTS or compatible version
+### Regenerating art and music
 
-3. **Install Required Packages**
-   The project uses the following Unity packages that should be automatically installed:
-   - TextMesh Pro
-   - Unity IAP
-   - Google Mobile Ads
-   - Unity Analytics
+These scripts are in `tools/` and run on macOS:
 
-4. **Configure Build Settings**
-   - Go to `File > Build Settings`
-   - Select your target platform (iOS or Android)
-   - Click 'Switch Platform'
-   - Configure the appropriate player settings for your target platform
+| Script | Makes |
+|---|---|
+| `swift tools/render_ui_text.swift` | All button and label images in Baloo 2, plus the RAM badge |
+| `swift tools/make_hanuman_forms.swift` | The eight Hanuman forms |
+| `swift tools/make_ramayana_sprites.swift` | Rakshasas and scenery silhouettes |
+| `python3 tools/make_ramayana_music.py` | The Raag Yaman theme loop |
 
-### Building for iOS
-1. **Configure Player Settings**
-   - Go to `Edit > Project Settings > Player`
-   - Set Bundle Identifier (e.g., com.yourcompany.hyperdive)
-   - Configure other iOS-specific settings
+## Before publishing
 
-2. **Build the Project**
-   - Go to `File > Build Settings`
-   - Click 'Build' or 'Build and Run'
-   - Select a destination folder for the Xcode project
-
-3. **Finalize in Xcode**
-   - Open the generated Xcode project
-   - Configure signing with your Apple Developer account
-   - Set capabilities as needed (In-App Purchases, etc.)
-   - Build and run on a device or simulator
-
-### Building for Android
-1. **Configure Player Settings**
-   - Go to `Edit > Project Settings > Player`
-   - Set Bundle Identifier (e.g., com.yourcompany.hyperdive)
-   - Configure other Android-specific settings
-
-2. **Build the Project**
-   - Go to `File > Build Settings`
-   - Click 'Build' or 'Build and Run'
-   - Select a destination folder and filename for the APK
-
-3. **Testing on Device**
-   - Enable Developer options and USB debugging on your Android device
-   - Connect your device to your computer
-   - Install the APK directly or through Android Studio
-
-### Running the Game
-
-#### In Unity Editor
-1. **Open the Project**
-   ```bash
-   # Navigate to the Unity Hub application
-   open -a "Unity Hub"
-   # Or launch Unity directly with the project path
-   /Applications/Unity/Hub/Editor/2019.4.40f1/Unity.app/Contents/MacOS/Unity -projectPath "/path/to/hyper-dive"
-   ```
-
-2. **Load the Main Scene**
-   - In the Project window, navigate to `Assets/Scenes/`
-   - Double-click on `MainMenu.unity` to open it
-   - Alternatively, use the keyboard shortcut: Ctrl+O (Windows) or Cmd+O (Mac), then select the scene file
-
-3. **Run the Game in Editor**
-   - Click the Play button at the top center of the Unity Editor
-   - Or use the keyboard shortcut: Ctrl+P (Windows) or Cmd+P (Mac)
-   - To stop the game, click the Play button again or press the same shortcut
-
-4. **Debug Mode**
-   - To run in debug mode with console output:
-     ```bash
-     # For macOS
-     /Applications/Unity/Hub/Editor/2019.4.40f1/Unity.app/Contents/MacOS/Unity -projectPath "/path/to/hyper-dive" -logFile -console
-     ```
-
-#### On iOS Device
-1. **Install via Xcode**
-   ```bash
-   # Open the Xcode project
-   open "/path/to/ios-build/Unity-iPhone.xcodeproj"
-   ```
-   - Connect your iOS device
-   - Select your device from the target dropdown
-   - Click the Play button to build and run
-
-2. **Install via Terminal (for developers)**
-   ```bash
-   # Using ios-deploy tool (needs to be installed via npm or brew)
-   ios-deploy --bundle "/path/to/HyperDive.app" --id [DEVICE_UDID]
-   ```
-
-#### On Android Device
-1. **Install via ADB**
-   ```bash
-   # Make sure ADB is in your PATH
-   adb install -r "/path/to/HyperDive.apk"
-   ```
-
-2. **Run Logcat for Debugging**
-   ```bash
-   adb logcat -s Unity ActivityManager PackageManager
-   ```
-
-#### Game Controls and Usage
-1. **Main Menu Navigation**
-   - Tap the "Play" button to start a new game
-   - Tap the "Shop" button to access character upgrades and purchases
-   - Tap the "Settings" button to adjust sound, music, and other preferences
-   - Tap the "Leaderboard" button to view high scores
-
-2. **Gameplay Controls**
-   - Tap anywhere on the screen to change the character's direction
-   - Tap and hold for more precise control in challenging sections
-   - Swipe (if enabled in settings) for special maneuvers
-
-3. **In-Game Actions**
-   - Collect blue oxygen tanks to replenish oxygen levels
-   - Collect gems for currency and score
-   - Avoid obstacles and poison gas zones
-   - Pause the game by tapping the pause button in the top corner
-
-## Customization and Extension
-
-### Adding New Content
-1. **Creating New Obstacles**
-   - Duplicate existing obstacle prefabs in `Assets/prefab/`
-   - Modify their appearance and behavior
-   - Add them to the obstacle spawner in the appropriate scenes
-
-2. **Adding New Characters**
-   - Create new character models or modify existing ones
-   - Add them to the shop system in `shopManager.cs`
-   - Configure their properties and unlock conditions
-
-3. **Modifying Difficulty**
-   - Adjust parameters in `levelManager.cs` to change difficulty progression
-   - Modify spawn rates and patterns in `spawner.cs`
-
-### Monetization Configuration
-1. **Configuring AdMob**
-   - Replace placeholder ad unit IDs in `Admanager.cs` and `Admob.cs` with your own
-   - Test ads using test mode before deploying
-
-2. **Setting Up In-App Purchases**
-   - Configure product IDs in `IAPManager.cs`
-   - Set up products in your App Store Connect or Google Play Console
-
-## Troubleshooting
-
-### Common Issues
-- **Build Errors**: Ensure all required packages are installed and compatible
-- **Performance Issues**: Check for memory leaks or excessive instantiation
-- **Ad Integration Problems**: Verify correct implementation of ad unit IDs
-- **IAP Issues**: Confirm proper configuration in both code and developer consoles
-
-### Debug Tools
-- Enable debug logging by uncommenting debug lines in key scripts
-- Use Unity Profiler to identify performance bottlenecks
-- Test IAP functionality using sandbox environments
-
-## Important Note Before Pushing to GitHub
-Before pushing this project to GitHub, the following sensitive information has been removed:
-
-1. Ad IDs in Admanager.cs and Admob.cs:
-   - App ID: "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX"
-   - Reward ID: "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX"
-
-2. Any API keys or sensitive credentials in configuration files
+- [ ] Get Prajwalvv's permission to publish a game based on Hyper Dive, and credit him in the app and the store listing.
+- [ ] Confirm the Muse-generated artwork (menu background and Hanuman) may be used commercially.
+- [ ] Set your own bundle ID, company name and app name (Player Settings).
+- [ ] Re-enable current ad and IAP SDKs with your own IDs.
 
 ## Credits
-- **Game Design & Development**: Original Creator
-- **Art Assets**: Custom-made and Unity Asset Store
-- **Sound Effects**: Various royalty-free sources
-- **Special Thanks**: To the Unity community for resources and support
+
+- **Original game:** [Hyper Dive](https://github.com/Prajwalvv/Hyper-Dive) by Prajwalvv: gameplay, levels, obstacles, shop and UI.
+- **Ramayana edition:** [girishmohan](https://github.com/girishmohan).
+- **Hanuman and menu art:** generated with Muse.
+- **Font:** [Baloo 2](https://github.com/EkType/Baloo2) by Ek Type, SIL Open Font License 1.1 (`hyper dive/Assets/A-Z_Materials/fonts/Baloo2/OFL.txt`).
+- **Music, rakshasas, scenery and UI text art:** original, generated by the scripts in `tools/`.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+The original Hyper Dive README states an MIT License, but its repository has no LICENSE file. Please check with the original author before reusing or publishing this code.
