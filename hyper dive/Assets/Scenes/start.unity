@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 351864028}
   - component: {fileID: 351864030}
   - component: {fileID: 351864029}
+  - component: {fileID: 351864031}
   m_Layer: 5
   m_Name: bestScore
   m_TagString: Untagged
@@ -597,7 +598,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 11f24eff8c12346ce87849006936d79d, type: 3}
+    m_Font: {fileID: 12800000, guid: 6bff22afa3ab4470baa6ff4f85db2d2f, type: 3}
     m_FontSize: 55
     m_FontStyle: 1
     m_BestFit: 0
@@ -607,7 +608,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: o
 --- !u!222 &351864030
@@ -618,6 +619,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351864027}
   m_CullTransparentMesh: 0
+--- !u!114 &351864031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351864027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.16, g: 0.07, b: 0.03, a: 0.9}
+  m_EffectDistance: {x: 1.5, y: -1.5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &388077921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,12 +1452,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 11f24eff8c12346ce87849006936d79d, type: 3}
+    m_Font: {fileID: 12800000, guid: 6bff22afa3ab4470baa6ff4f85db2d2f, type: 3}
     m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 120
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1679,12 +1695,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 11f24eff8c12346ce87849006936d79d, type: 3}
+    m_Font: {fileID: 12800000, guid: 6bff22afa3ab4470baa6ff4f85db2d2f, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 54
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

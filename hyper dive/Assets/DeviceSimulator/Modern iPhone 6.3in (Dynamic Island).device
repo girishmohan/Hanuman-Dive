@@ -1,0 +1,54 @@
+{
+  "friendlyName": "Modern iPhone 6.3in (Dynamic Island)",
+  "version": 1,
+  "screens": [
+    {
+      "width": 1206,
+      "height": 2622,
+      "navigationBarHeight": 0,
+      "dpi": 460.0,
+      "orientations": [
+        {
+          "orientation": 1,
+          "safeArea": { "serializedVersion": "2", "x": 0.0, "y": 102.0, "width": 1206.0, "height": 2334.0 },
+          "cutouts": [ { "serializedVersion": "2", "x": 415.0, "y": 2478.0, "width": 375.0, "height": 111.0 } ]
+        }
+      ]
+    }
+  ],
+  "systemInfo": {
+    "deviceModel": "iPhone18,1",
+    "deviceType": 1,
+    "operatingSystem": "iOS 26.0",
+    "operatingSystemFamily": 0,
+    "processorCount": 6,
+    "processorFrequency": 0,
+    "processorType": "arm64e",
+    "supportsAccelerometer": true,
+    "supportsAudio": true,
+    "supportsGyroscope": true,
+    "supportsLocationService": true,
+    "supportsVibration": true,
+    "systemMemorySize": 8192,
+    "unsupportedIdentifier": "unsupported",
+    "graphicsDependentData": [
+      {
+        "graphicsDeviceType": 16,
+        "graphicsMemorySize": 2048,
+        "graphicsDeviceName": "Apple GPU",
+        "graphicsDeviceVendor": "Apple",
+        "graphicsDeviceVendorID": 0,
+        "graphicsDeviceVersion": "Metal",
+        "graphicsMultiThreaded": true,
+        "graphicsShaderLevel": 50,
+        "maxTextureSize": 16384,
+        "npotSupport": 2,
+        "supportedRenderTargetCount": 8,
+        "supportsMultisampledTextures": 1,
+        "supportsShadows": true,
+        "supportsComputeShaders": true,
+        "supportsInstancing": true
+      }
+    ]
+  }
+}

@@ -25,6 +25,15 @@ Optional extras in Unity:
   Tick `Always Spawn` to playtest without waiting for the chapter. All damage, speed and colour values are in the Inspector.
 - Placeholder Hanuman: `A-Z_Materials/hanuman/hanuman_placeholder.png`, used by all 10 player skins in `SampleScene`. Regenerate or tweak it with `python3 tools/make_placeholder_hanuman.py`. The menu, start and skin-shop scenes still show the diver. To use real art, replace that PNG with one of the same size and pose (600x600, arms up).
 
+## Look and feel (Oct 2026 batch)
+- Player: Muse-made Hanuman (`hanuman/hanuman_player.png`) plus 8 colour forms in the FORMS shop (`buyPlayer/Group 27-34.png`, made by `tools/make_hanuman_forms.swift`).
+- HUD and pickups: the oxygen tank is now a saffron R-A-M badge (`o2/02_5.png`).
+- Font: Baloo 2 (SIL Open Font License, `fonts/Baloo2/OFL.txt`) for all UI text. The text images are redrawn by `tools/render_ui_text.swift`; edit its LABELS table to change wording.
+- Falling backdrop: dawn sky palette (ColorCycler on the gameplay camera) plus drifting temple, Lanka, palm, lotus, cloud and mountain silhouettes (`ramayanaBackdrop.cs`).
+- Rakshasas: blue and green demons weave upward from 12 s, 40 damage (`ramayanaDemons.cs`, sprites from `tools/make_ramayana_sprites.swift`).
+- Music: original Raag Yaman loop per theme-brief.pdf (`tools/make_ramayana_music.py`): bansuri over a sa-pa tanpura, 66 BPM, 72.7 s, 44.1 kHz stereo WAV. Unity re-encodes it for iOS/Android.
+- Simulator: `Assets/DeviceSimulator/` adds two modern Dynamic Island iPhone profiles with no bezel overlay.
+
 ## Mapping from the original game
 
 | Original | Ramayana version |
@@ -38,3 +47,4 @@ Optional extras in Unity:
 - Replace placeholder AdMob IDs in `Admanager.cs` and `Admob.cs` with your own.
 - Configure your own in-app purchase product IDs in `IAPManager.cs`.
 - Replace all placeholder art and audio with original or licensed assets.
+- Confirm in writing that the Muse-generated images (menu background, player) may be used commercially.
