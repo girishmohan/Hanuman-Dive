@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class heartGemLife : MonoBehaviour
 {
     private move player;
-    public int healthPerTouch;
+    [FormerlySerializedAs("healthPerTouch")]
+    public int energyPerTouch;
     public GameObject Effect;
     public float speed;
     private Animator anim;
@@ -30,7 +32,7 @@ public class heartGemLife : MonoBehaviour
             
             Instantiate(Effect, transform.position, Quaternion.identity);
             
-            player.AddHealth(healthPerTouch);
+            player.AddEnergy(energyPerTouch);
             //anim.SetTrigger("green");
             Destroy(gameObject);
             

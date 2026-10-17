@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Serialization;
 //using GoogleMobileAds.Api;
 public class move : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class move : MonoBehaviour
     //public float down_speed;
     public Vector3 respawnPoint;
     private Vector3 targetPos;
-    public int health = 0;
+    // Rama Naam energy (was "oxygen"/health): reaching 0 ends the run.
+    [FormerlySerializedAs("health")]
+    public int ramaNaamEnergy = 0;
     //private RewardBasedVideoAd rewardBasedVideo;
     public bool publishingApp;
     public Animator animator;
     public scoreManager gameScore;
-    public UnityEngine.UI.Text healthDisplay;
+    [FormerlySerializedAs("healthDisplay")]
+    public UnityEngine.UI.Text energyDisplay;
+    public string energyLabel = "Rama Naam";
     public GameObject gameOver;
     public GameObject toxic_Particle_System;
 
@@ -40,11 +45,10 @@ public class move : MonoBehaviour
     {
 
 
-        healthDisplay.text = health + "%";
+        ramaNaamEnergy = Mathf.Clamp(ramaNaamEnergy, -10, 100);
+        UpdateEnergyDisplay();
 
-        health = Mathf.Clamp(health, -10, 100);
-
-        if (health <= 0)
+        if (ramaNaamEnergy <= 0)
         {
             gameOver.SetActive(true);
             Destroy(gameObject);
@@ -61,10 +65,15 @@ public class move : MonoBehaviour
         move_with_touch_drag();
     }
 
-    public void AddHealth(int numberOfCoins)
+    public void AddEnergy(int amount)
     {
-        health += numberOfCoins;
-        healthDisplay.text = "" + health;
+        ramaNaamEnergy += amount;
+        UpdateEnergyDisplay();
+    }
+
+    void UpdateEnergyDisplay()
+    {
+        energyDisplay.text = energyLabel + " " + Mathf.Max(ramaNaamEnergy, 0) + "%";
     }
 
     
