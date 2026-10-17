@@ -26,6 +26,7 @@ public class move : MonoBehaviour
     [FormerlySerializedAs("healthDisplay")]
     public UnityEngine.UI.Text energyDisplay;
     public string energyLabel = "Rama Naam";
+    private const int energyLabelSize = 13;
     public GameObject gameOver;
     public GameObject toxic_Particle_System;
 
@@ -40,6 +41,10 @@ public class move : MonoBehaviour
     {
        
         rb = GetComponent<Rigidbody2D>();
+        // Two-line energy readout (number + caption) may exceed the original text box.
+        energyDisplay.horizontalOverflow = HorizontalWrapMode.Overflow;
+        energyDisplay.verticalOverflow = VerticalWrapMode.Overflow;
+        energyDisplay.lineSpacing = 0.8f;
         respawnPoint = transform.position;
     }
 
@@ -84,7 +89,8 @@ public class move : MonoBehaviour
 
     void UpdateEnergyDisplay()
     {
-        energyDisplay.text = energyLabel + " " + Mathf.Max(ramaNaamEnergy, 0) + "%";
+        // Number on top, small caption underneath so it stays clear of the METERS heading.
+        energyDisplay.text = Mathf.Max(ramaNaamEnergy, 0) + "%\n<size=" + energyLabelSize + ">" + energyLabel.ToUpper() + "</size>";
     }
 
     
