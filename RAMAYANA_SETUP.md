@@ -6,18 +6,30 @@ Based on Hyper Dive by Prajwalvv (https://github.com/Prajwalvv/Hyper-Dive). Cred
 
 New script: `hyper dive/Assets/scripts/chapterManager.cs`
 
-Hook it up in Unity:
-1. Open the gameplay scene (check `SampleScene.unity` / `start.unity` for the one with the player and score UI).
-2. Create an empty GameObject named `ChapterManager` and add the `chapterManager` component. The 8 Ramayana chapters fill in automatically.
-3. Optional: create two UI Texts (title and subtitle) and a distance Text, then drag them into the matching fields. Drag the Main Camera into `Background Camera` to tint the sky per chapter.
-4. Press Play. Chapter banners appear as distance grows. Tune `Distance Per Second` and each chapter's `Start Distance`.
+Already hooked up: `SampleScene.unity` has a `RamayanaDirector` object carrying `chapterManager` (step 3).
+
+Optional extras in Unity:
+1. Create two UI Texts (title and subtitle) and a distance Text, then drag them into the matching `chapterManager` fields.
+2. Drag the Main Camera into `Background Camera` to tint the sky per chapter.
+3. Tune `Distance Per Second` and each chapter's `Start Distance`.
+
+## Status
+- Step 1: Unity 2022.3 upgrade. Ads/IAP disabled: plugins parked in `hyper dive/_disabled_monetization/`, scripts gated by the `HD_ADS` / `HD_IAP` scripting defines.
+- Step 2: oxygen is now Rama Naam energy (`move.ramaNaamEnergy`, HUD shows "Rama Naam NN%").
+- Step 3: first obstacle set, `ramayanaObstacleSet.cs` on `RamayanaDirector`. "The Great Leap" (chapter index 1) spawns placeholder shapes:
+  - Surasa's Jaws: green wall with a gap (34 damage)
+  - Simhika's Shadow: dark orb that drifts toward Hanuman (25)
+  - Ocean Rocks: grey squares (10 each)
+  - Mainaka Peak: gold diamond pickup (+15 energy)
+
+  Tick `Always Spawn` to playtest without waiting for the chapter. All damage, speed and colour values are in the Inspector.
 
 ## Mapping from the original game
 
 | Original | Ramayana version |
 |---|---|
 | Oxygen (`move.health`, `heartGemLife`) | Rama Naam energy |
-| Obstacles (`obstacles.cs`) | Mainaka, Surasa, Lanka walls, arrows, fire |
+| Obstacles (`obstacles.cs`) | Mainaka, Surasa, Simhika (done, placeholder); Lanka walls, arrows, fire |
 | Gems (`levelManager.coins`) | Lotus petals |
 | Skins (`shopManager`, `levelManager`) | Hanuman forms |
 
