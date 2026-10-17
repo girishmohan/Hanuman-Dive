@@ -31,6 +31,9 @@ public class move : MonoBehaviour
 
     private Touch touch;
     public float speedModifer = 0.01f;
+    [Tooltip("Arrow keys / A-D speed (world units per second), for playtesting in the editor.")]
+    public float keyboardSpeed = 10f;
+    private Vector3 lastMousePosition;
     //public GameObject effect;
 
     private void Start()
@@ -61,8 +64,16 @@ public class move : MonoBehaviour
             //SceneManager.LoadScene("gameOver");
         }
 
-        //move_with_touch_drag();
-        move_with_touch_drag();
+        if (Input.touchCount > 0)
+        {
+            move_with_touch_drag();
+        }
+        else
+        {
+            // Editor/desktop playtesting: mouse drag works like a finger, arrow keys also steer.
+            move_with_mouse_drag();
+            move_with_keys();
+        }
     }
 
     public void AddEnergy(int amount)
@@ -101,6 +112,29 @@ public class move : MonoBehaviour
         }
     }
 
+
+    void move_with_mouse_drag()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            lastMousePosition = Input.mousePosition;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            float dx = Input.mousePosition.x - lastMousePosition.x;
+            lastMousePosition = Input.mousePosition;
+            transform.position = new Vector3(transform.position.x + dx * speedModifer, transform.position.y);
+        }
+    }
+
+    void move_with_keys()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        if (h != 0f)
+        {
+            transform.position = new Vector3(transform.position.x + h * keyboardSpeed * Time.deltaTime, transform.position.y);
+        }
+    }
 
     void move_touch()
     {
