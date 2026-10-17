@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// Rakshasas (Ravana's demon warriors) that rise toward Hanuman, weaving side
-/// to side. Touching one costs Rama Naam energy. They start after a short calm
+/// to side. Bumping into one costs 5% Rama Naam energy. They start after a short calm
 /// opening and then appear every few seconds in every chapter.
 /// </summary>
 public class ramayanaDemons : MonoBehaviour
@@ -15,7 +15,8 @@ public class ramayanaDemons : MonoBehaviour
     public Vector2 secondsBetween = new Vector2(5f, 8f);
 
     [Header("How")]
-    public int damage = 40;
+    [Tooltip("Rama Naam energy lost per bump (energy is 0-100, so 5 = 5%).")]
+    public int damage = 5;
     public float riseSpeed = 11f;
     public float weaveWidth = 1.6f;
     public float weaveSpeed = 1.8f;

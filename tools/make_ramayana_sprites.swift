@@ -166,3 +166,116 @@ silhouette("bd_lotus.png", 256, 256) {
 silhouette("bd_mountain.png", 512, 256) {
     poly([(0, 0), (120, 150), (180, 110), (290, 240), (380, 140), (430, 170), (512, 60), (512, 0)]).fill()
 }
+
+// MARK: Chapter scenery (added for chapter-themed backdrops)
+silhouette("bd_wave.png", 512, 256) {
+    let p = NSBezierPath(); p.move(to: NSPoint(x: 0, y: 0)); p.line(to: NSPoint(x: 0, y: 90))
+    for k in 0..<4 {
+        let x0 = CGFloat(k) * 128
+        p.curve(to: NSPoint(x: x0 + 128, y: 90), controlPoint1: NSPoint(x: x0 + 30, y: 190), controlPoint2: NSPoint(x: x0 + 110, y: 170))
+    }
+    p.line(to: NSPoint(x: 512, y: 0)); p.close(); p.fill()
+}
+silhouette("bd_ashoka_tree.png", 384, 512) {
+    poly([(176, 0), (208, 0), (204, 220), (180, 220)]).fill()
+    for (x, y, r) in [(192, 300, 110), (110, 260, 80), (274, 260, 80), (150, 380, 85), (240, 390, 85), (192, 450, 70)] as [(CGFloat, CGFloat, CGFloat)] { oval(x, y, r * 2, r * 1.7).fill() }
+}
+silhouette("bd_flame.png", 256, 512) {
+    let f = curve((128, 0), (20, 60), (40, 260), (110, 330)); f.curve(to: NSPoint(x: 128, y: 500), controlPoint1: NSPoint(x: 90, y: 400), controlPoint2: NSPoint(x: 120, y: 450))
+    f.curve(to: NSPoint(x: 190, y: 300), controlPoint1: NSPoint(x: 160, y: 420), controlPoint2: NSPoint(x: 210, y: 380))
+    f.curve(to: NSPoint(x: 128, y: 0), controlPoint1: NSPoint(x: 240, y: 200), controlPoint2: NSPoint(x: 230, y: 40)); f.close(); f.fill()
+}
+silhouette("bd_herb.png", 384, 512) {
+    poly([(0, 0), (90, 220), (150, 170), (230, 360), (300, 230), (384, 300), (384, 0)]).fill()
+    for (x, y) in [(150, 250), (230, 420), (300, 300)] as [(CGFloat, CGFloat)] {
+        for a in [-40.0, 0.0, 40.0] {
+            let t = NSAffineTransform(); t.translateX(by: x, yBy: y); t.rotate(byDegrees: CGFloat(a))
+            let leaf = oval(0, 36, 26, 70); leaf.transform(using: t as AffineTransform); leaf.fill()
+        }
+    }
+}
+silhouette("bd_diya.png", 256, 256) {
+    let bowl = curve((30, 90), (60, 10), (196, 10), (226, 90)); bowl.close(); bowl.fill()
+    let flame = curve((128, 90), (98, 140), (118, 190), (128, 230)); flame.curve(to: NSPoint(x: 128, y: 90), controlPoint1: NSPoint(x: 140, y: 190), controlPoint2: NSPoint(x: 158, y: 140)); flame.fill()
+}
+silhouette("bd_flag.png", 256, 512) {
+    NSBezierPath(rect: NSRect(x: 60, y: 0, width: 14, height: 500)).fill()
+    poly([(74, 500), (230, 450), (74, 380)]).fill()
+    poly([(74, 420), (200, 380), (74, 330)]).fill()
+}
+silhouette("bd_bell.png", 256, 384) {
+    NSBezierPath(rect: NSRect(x: 120, y: 260, width: 16, height: 120)).fill()
+    let b = curve((40, 60), (60, 200), (90, 270), (128, 270)); b.curve(to: NSPoint(x: 216, y: 60), controlPoint1: NSPoint(x: 166, y: 270), controlPoint2: NSPoint(x: 196, y: 200)); b.close(); b.fill()
+    NSBezierPath(rect: NSRect(x: 26, y: 40, width: 204, height: 24)).fill()
+    oval(128, 26, 34, 34).fill()
+}
+
+// MARK: Milestone icons (256x256, coloured, outlined)
+func icon(_ name: String, _ body: () -> Void) {
+    render(name, 256, 256) {
+        // Soft golden halo so pickups read as special.
+        let halo = NSGradient(colors: [NSColor(red: 1, green: 0.9, blue: 0.5, alpha: 0.85), NSColor(red: 1, green: 0.8, blue: 0.3, alpha: 0)])!
+        halo.draw(in: NSBezierPath(ovalIn: NSRect(x: 4, y: 4, width: 248, height: 248)), relativeCenterPosition: .zero)
+        body()
+    }
+}
+let GOLD = NSColor(red: 0.98, green: 0.78, blue: 0.20, alpha: 1)
+let GOLD_D = NSColor(red: 0.80, green: 0.55, blue: 0.10, alpha: 1)
+icon("ms_ring.png") {
+    let ring = NSBezierPath(ovalIn: NSRect(x: 68, y: 50, width: 120, height: 120))
+    ring.appendOval(in: NSRect(x: 92, y: 74, width: 72, height: 72)); ring.windingRule = .evenOdd
+    shape(ring, GOLD, line: 8)
+    shape(poly([(98, 168), (158, 168), (174, 196), (128, 230), (82, 196)]), NSColor(red: 0.4, green: 0.85, blue: 1, alpha: 1), line: 7)
+    shape(poly([(98, 168), (158, 168), (128, 140)]), GOLD_D, line: 6)
+}
+icon("ms_mainaka.png") {
+    shape(poly([(40, 60), (110, 200), (140, 160), (216, 60)]), NSColor(red: 0.35, green: 0.70, blue: 0.40, alpha: 1))
+    shape(poly([(110, 200), (90, 160), (128, 168)]), NSColor.white, line: 5)
+    shape(oval(128, 214, 30, 30), GOLD, line: 6)
+}
+icon("ms_gate.png") {
+    let arch = NSBezierPath(); arch.move(to: NSPoint(x: 50, y: 40)); arch.line(to: NSPoint(x: 50, y: 150))
+    arch.curve(to: NSPoint(x: 206, y: 150), controlPoint1: NSPoint(x: 60, y: 230), controlPoint2: NSPoint(x: 196, y: 230))
+    arch.line(to: NSPoint(x: 206, y: 40)); arch.close()
+    arch.appendRect(NSRect(x: 92, y: 40, width: 72, height: 100)); arch.windingRule = .evenOdd
+    shape(arch, GOLD, line: 8)
+    shape(oval(128, 196, 22, 22), NSColor(red: 0.85, green: 0.1, blue: 0.1, alpha: 1), line: 5)
+}
+icon("ms_ring_to_sita.png") {
+    for a in stride(from: -60.0, through: 60.0, by: 30.0) {
+        let t = NSAffineTransform(); t.translateX(by: 128, yBy: 60); t.rotate(byDegrees: CGFloat(a))
+        let petal = oval(0, 56, 46, 110); petal.transform(using: t as AffineTransform)
+        shape(petal, NSColor(red: 1, green: 0.62, blue: 0.75, alpha: 1), line: 6)
+    }
+    let ring = NSBezierPath(ovalIn: NSRect(x: 92, y: 120, width: 72, height: 72))
+    ring.appendOval(in: NSRect(x: 108, y: 136, width: 40, height: 40)); ring.windingRule = .evenOdd
+    shape(ring, GOLD, line: 6)
+}
+icon("ms_gada.png") {
+    limb((70, 50), (150, 150), 10, NSColor(red: 0.55, green: 0.35, blue: 0.15, alpha: 1))
+    shape(oval(170, 172, 90, 100), GOLD, line: 8)
+    for k in 0..<3 { shape(oval(150 + CGFloat(k) * 20, 172 + CGFloat(k % 2) * 14, 10, 10), GOLD_D, line: 0) }
+    shape(poly([(160, 218), (182, 218), (171, 244)]), GOLD, line: 6)
+}
+icon("ms_fire.png") {
+    limb((128, 30), (128, 110), 12, NSColor(red: 0.55, green: 0.35, blue: 0.15, alpha: 1))
+    let f = curve((128, 110), (60, 140), (80, 200), (128, 236)); f.curve(to: NSPoint(x: 128, y: 110), controlPoint1: NSPoint(x: 176, y: 200), controlPoint2: NSPoint(x: 196, y: 140))
+    shape(f, NSColor(red: 1, green: 0.45, blue: 0.1, alpha: 1), line: 7)
+    let inner = curve((128, 118), (100, 140), (106, 180), (128, 200)); inner.curve(to: NSPoint(x: 128, y: 118), controlPoint1: NSPoint(x: 150, y: 180), controlPoint2: NSPoint(x: 156, y: 140))
+    shape(inner, NSColor(red: 1, green: 0.85, blue: 0.3, alpha: 1), line: 0)
+}
+icon("ms_sanjeevani.png") {
+    shape(poly([(40, 50), (100, 170), (150, 120), (216, 50)]), NSColor(red: 0.45, green: 0.40, blue: 0.35, alpha: 1))
+    for (x, y, a) in [(110, 190, -30.0), (140, 205, 0.0), (170, 190, 30.0)] as [(CGFloat, CGFloat, Double)] {
+        let t = NSAffineTransform(); t.translateX(by: x, yBy: y - 30); t.rotate(byDegrees: CGFloat(a))
+        let leaf = oval(0, 30, 30, 70); leaf.transform(using: t as AffineTransform)
+        shape(leaf, NSColor(red: 0.35, green: 0.95, blue: 0.45, alpha: 1), line: 6)
+    }
+}
+icon("ms_bell.png") {
+    limb((128, 200), (128, 240), 6, GOLD_D)
+    let b = curve((56, 70), (70, 170), (96, 210), (128, 210)); b.curve(to: NSPoint(x: 200, y: 70), controlPoint1: NSPoint(x: 160, y: 210), controlPoint2: NSPoint(x: 186, y: 170)); b.close()
+    shape(b, GOLD, line: 8)
+    shape(NSBezierPath(roundedRect: NSRect(x: 44, y: 56, width: 168, height: 22), xRadius: 8, yRadius: 8), GOLD_D, line: 6)
+    shape(oval(128, 42, 30, 30), GOLD, line: 6)
+}

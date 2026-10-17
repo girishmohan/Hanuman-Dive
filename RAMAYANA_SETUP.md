@@ -1,4 +1,4 @@
-# Hanuman: Ramayana Edition (work in progress)
+# Hanuman Dive (work in progress)
 
 Based on Hyper Dive by Prajwalvv (https://github.com/Prajwalvv/Hyper-Dive). Credit the original author, and confirm his permission before publishing.
 
@@ -26,7 +26,7 @@ Optional extras in Unity:
 - Placeholder Hanuman: `A-Z_Materials/hanuman/hanuman_placeholder.png`, used by all 10 player skins in `SampleScene`. Regenerate or tweak it with `python3 tools/make_placeholder_hanuman.py`. The menu, start and skin-shop scenes still show the diver. To use real art, replace that PNG with one of the same size and pose (600x600, arms up).
 
 ## Look and feel (Oct 2026 batch)
-- Player: Muse-made Hanuman (`hanuman/hanuman_player.png`) plus 8 colour forms in the FORMS shop (`buyPlayer/Group 27-34.png`, made by `tools/make_hanuman_forms.swift`).
+- Player: refined Muse Hanuman (`hanuman/hanuman_player.png`) everywhere; the 8 AVATAR shop entries are the same Hanuman with different auras (`buyPlayer/Group 27-34.png`, made by `tools/make_hanuman_forms.swift`).
 - HUD and pickups: the oxygen tank is now a saffron R-A-M badge (`o2/02_5.png`).
 - Font: Baloo 2 (SIL Open Font License, `fonts/Baloo2/OFL.txt`) for all UI text. The text images are redrawn by `tools/render_ui_text.swift`; edit its LABELS table to change wording.
 - Falling backdrop: dawn sky palette (ColorCycler on the gameplay camera) plus drifting temple, Lanka, palm, lotus, cloud and mountain silhouettes (`ramayanaBackdrop.cs`).
@@ -48,3 +48,10 @@ Optional extras in Unity:
 - Configure your own in-app purchase product IDs in `IAPManager.cs`.
 - Replace all placeholder art and audio with original or licensed assets.
 - Confirm in writing that the Muse-generated images (menu background, player) may be used commercially.
+
+## Journey and milestones
+- Chapters follow the METERS counter: 0 / 100 / 250 / 400 / 600 / 850 / 1150 / 1500 m (`chapterManager.DefaultChapters`).
+- One milestone per chapter (`ramayanaMilestones.Defaults`). Saved as PlayerPrefs `Milestone_0` to `Milestone_7`; delete them to reset.
+- The main menu shows the next goal under the title, plus a JOURNEY panel (`ramayanaJourneyMenu.cs`, built at runtime).
+- The sky and drifting scenery change per chapter (`ramayanaBackdrop.chapterScenery`). The old neon ColorCycler on the gameplay camera is disabled.
+- Rakshasa bumps cost 5% energy.

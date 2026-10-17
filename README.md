@@ -1,29 +1,33 @@
-# Hanuman: Ramayana Edition
+# Hanuman Dive
 
 A devotional endless-faller for iOS and Android, built in Unity. Hanuman leaps across the ocean toward Lanka to find Sita, dodging spikes, Surasa's jaws, Simhika's shadow and Ravana's rakshasas, and chanting his way forward on **Rama Naam** energy.
 
 <p align="center">
-  <img src="images/menu.png" width="260" alt="Start menu: Hanuman leaping over the temple city">
-  &nbsp;&nbsp;
-  <img src="images/gameplay.png" width="260" alt="Gameplay: Hanuman falling past temple silhouettes toward a rakshasa">
-  &nbsp;&nbsp;
-  <img src="images/forms_shop.png" width="260" alt="FORMS shop with Golden and Sindoor Hanuman">
+  <img src="images/menu.png" width="200" alt="Main menu: Hanuman Dive with the next goal">
+  &nbsp;
+  <img src="images/journey.png" width="200" alt="Journey panel: chapters, distances and milestones">
+  &nbsp;
+  <img src="images/gameplay.png" width="200" alt="Gameplay in the Lanka chapter with a milestone and a rakshasa">
+  &nbsp;
+  <img src="images/forms_shop.png" width="200" alt="AVATAR shop with Hanuman avatars">
 </p>
 
 > Work in progress. This game is a fork of [Hyper Dive](https://github.com/Prajwalvv/Hyper-Dive) by **Prajwalvv**, re-themed around the Ramayana. Full credit for the original game goes to him (see [Credits](#credits)).
 
 ## The journey
 
-| Chapter | Distance | Story beat |
+| Chapter | Starts at | Milestone to collect |
 |---|---|---|
-| Kishkindha | 0 m | Hanuman takes Rama's ring |
-| The Great Leap | 150 m | Across the ocean to Lanka |
-| Lanka | 400 m | The golden city of Ravana |
-| Ashoka Vatika | 700 m | The search for Sita |
-| Rakshasa Battle | 1000 m | Hanuman faces Ravana's warriors |
-| Lanka Burns | 1400 m | Fire sweeps through the city |
-| Sanjeevani | 1800 m | The mountain of healing herbs |
-| Victory | 2300 m | Jai Shri Ram |
+| Kishkindha | 0 m | Rama's Ring (appears by 20 m) |
+| The Great Leap | 100 m | Mainaka's Blessing |
+| Lanka | 250 m | Lankini's Gate |
+| Ashoka Vatika | 400 m | Ring for Sita (needs Rama's Ring from the same run) |
+| Rakshasa Battle | 600 m | Hanuman's Gada |
+| Lanka Burns | 850 m | Light the Fire |
+| Sanjeevani | 1150 m | Sanjeevani herb |
+| Victory | 1500 m | Temple Bell |
+
+Distances use the in-game **METERS** counter. Each chapter changes the sky and the scenery drifting past, and shows a banner. A missed milestone comes back about 60 m later while its chapter lasts. Completed milestones are saved and shown on the main menu's **JOURNEY** panel, next to a "Next goal" line under the title.
 
 ## What's in the game
 
@@ -33,10 +37,10 @@ A devotional endless-faller for iOS and Android, built in Unity. Hanuman leaps a
   - Simhika's Shadow: an orb that chases you.
   - Ocean rocks.
   - Mainaka Peak: a golden pickup that restores energy.
-- **Rakshasas.** Ravana's demon warriors weave upward toward Hanuman from about 12 seconds into every run.
+- **Rakshasas.** Ravana's demon warriors weave upward toward Hanuman from about 12 seconds into every run. Each bump costs 5% energy.
 - **The original obstacles** are still here: spiked mines, saw blades and canyon walls. The mines hold off for the first 8 seconds.
-- **Eight Hanuman forms** to unlock with gems in the **FORMS** shop.
-- **Ramayana scenery.** A dawn-to-dusk sky with temple gopurams, Lanka towers, palms, lotuses and mountains drifting past.
+- **Eight Hanuman avatars** to unlock with gems in the **AVATAR** shop. Each is the same Hanuman with a different aura.
+- **Chapter scenery.** The sky and drifting silhouettes follow the story: palms in Kishkindha, waves over the ocean, towers and flags in Lanka, Ashoka trees, flames as Lanka burns, herb mountains, and temples, diyas and bells for Victory.
 - **Original music.** A serene Raag Yaman bansuri over a tanpura drone, as a seamless 73-second loop.
 - **Fits any phone.** It draws edge to edge, and the HUD keeps clear of notches, the Dynamic Island and the home bar.
 
@@ -64,6 +68,8 @@ Ads and in-app purchases are switched off for now. Their plugins are parked in `
 |---|---|
 | Chapters and distance | `scripts/chapterManager.cs` |
 | Ramayana hazards (Surasa, Simhika, rocks, Mainaka) | `scripts/ramayanaObstacleSet.cs` |
+| Milestones | `scripts/ramayanaMilestones.cs` |
+| Main-menu Journey panel and next goal | `scripts/ramayanaJourneyMenu.cs` |
 | Rakshasas | `scripts/ramayanaDemons.cs` |
 | Drifting scenery | `scripts/ramayanaBackdrop.cs` |
 | Hanuman, steering, Rama Naam energy | `scripts/move.cs` |
@@ -79,8 +85,8 @@ These scripts are in `tools/` and run on macOS:
 | Script | Makes |
 |---|---|
 | `swift tools/render_ui_text.swift` | All button and label images in Baloo 2, plus the RAM badge |
-| `swift tools/make_hanuman_forms.swift` | The eight Hanuman forms |
-| `swift tools/make_ramayana_sprites.swift` | Rakshasas and scenery silhouettes |
+| `swift tools/make_hanuman_forms.swift` | The eight Hanuman avatars |
+| `swift tools/make_ramayana_sprites.swift` | Rakshasas, scenery silhouettes and milestone icons |
 | `python3 tools/make_ramayana_music.py` | The Raag Yaman theme loop |
 
 ## Before publishing

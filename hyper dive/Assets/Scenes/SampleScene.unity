@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561105920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86cbe66bc8de848e994d79462520d54e, type: 3}
   m_Name: 
@@ -8507,6 +8507,7 @@ GameObject:
   - component: {fileID: 1700000004}
   - component: {fileID: 1700000006}
   - component: {fileID: 1700000005}
+  - component: {fileID: 1700000007}
   m_Layer: 0
   m_Name: RamayanaDirector
   m_TagString: Untagged
@@ -8544,10 +8545,12 @@ MonoBehaviour:
   chapters: []
   distancePerSecond: 3
   bannerSeconds: 3
+  skyBlendSeconds: 2.5
   chapterTitleText: {fileID: 0}
   chapterSubtitleText: {fileID: 0}
   distanceText: {fileID: 0}
-  backgroundCamera: {fileID: 0}
+  backgroundCamera: {fileID: 561105923}
+  bannerFont: {fileID: 12800000, guid: 6bff22afa3ab4470baa6ff4f85db2d2f, type: 3}
 --- !u!114 &1700000004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8598,7 +8601,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f83e26aaf13d54a2783fc041eea6b7bf, type: 3}
   firstAppearSeconds: 12
   secondsBetween: {x: 5, y: 8}
-  damage: 40
+  damage: 5
   riseSpeed: 11
   weaveWidth: 1.6
   weaveSpeed: 1.8
@@ -8625,12 +8628,136 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0ad9b58b3ed83486289d80bf362b1278, type: 3}
   - {fileID: 21300000, guid: ea177849ab5724174b69f55b03d18c19, type: 3}
   - {fileID: 21300000, guid: e6ca231348bab411fa3735b3bf58bdcb, type: 3}
+  chapterScenery:
+  - chapter: Kishkindha
+    silhouettes:
+    - {fileID: 21300000, guid: c6dcc6f8f3839460e8808c621a8c4a40, type: 3}
+    - {fileID: 21300000, guid: e6ca231348bab411fa3735b3bf58bdcb, type: 3}
+    - {fileID: 21300000, guid: 0ad9b58b3ed83486289d80bf362b1278, type: 3}
+    - {fileID: 21300000, guid: c6dcc6f8f3839460e8808c621a8c4a40, type: 3}
+    tint: {r: 0.95, g: 1, b: 0.9, a: 1}
+  - chapter: The Great Leap
+    silhouettes:
+    - {fileID: 21300000, guid: 79d80301442354da48aeda55f2977a0a, type: 3}
+    - {fileID: 21300000, guid: 0ad9b58b3ed83486289d80bf362b1278, type: 3}
+    - {fileID: 21300000, guid: 79d80301442354da48aeda55f2977a0a, type: 3}
+    - {fileID: 21300000, guid: e6ca231348bab411fa3735b3bf58bdcb, type: 3}
+    tint: {r: 0.92, g: 0.97, b: 1, a: 1}
+  - chapter: Lanka
+    silhouettes:
+    - {fileID: 21300000, guid: 9fdee334b9d5448b0ab189ce6924c8c0, type: 3}
+    - {fileID: 21300000, guid: 9d4ccab268bc7435b805c90dc0c1ba3d, type: 3}
+    - {fileID: 21300000, guid: 66b7d9fa673024ab9bface92a6a0c836, type: 3}
+    - {fileID: 21300000, guid: 9fdee334b9d5448b0ab189ce6924c8c0, type: 3}
+    tint: {r: 1, g: 0.92, b: 0.7, a: 1}
+  - chapter: Ashoka Vatika
+    silhouettes:
+    - {fileID: 21300000, guid: 0a3fe6192d7b8432ba386d584eccee83, type: 3}
+    - {fileID: 21300000, guid: ea177849ab5724174b69f55b03d18c19, type: 3}
+    - {fileID: 21300000, guid: 0a3fe6192d7b8432ba386d584eccee83, type: 3}
+    - {fileID: 21300000, guid: c6dcc6f8f3839460e8808c621a8c4a40, type: 3}
+    tint: {r: 0.92, g: 1, b: 0.9, a: 1}
+  - chapter: Rakshasa Battle
+    silhouettes:
+    - {fileID: 21300000, guid: 9fdee334b9d5448b0ab189ce6924c8c0, type: 3}
+    - {fileID: 21300000, guid: 9d4ccab268bc7435b805c90dc0c1ba3d, type: 3}
+    - {fileID: 21300000, guid: a64d6431733f242b0a590d99fd37e22f, type: 3}
+    tint: {r: 1, g: 0.86, b: 0.8, a: 1}
+  - chapter: Lanka Burns
+    silhouettes:
+    - {fileID: 21300000, guid: a64d6431733f242b0a590d99fd37e22f, type: 3}
+    - {fileID: 21300000, guid: 9fdee334b9d5448b0ab189ce6924c8c0, type: 3}
+    - {fileID: 21300000, guid: a64d6431733f242b0a590d99fd37e22f, type: 3}
+    - {fileID: 21300000, guid: a64d6431733f242b0a590d99fd37e22f, type: 3}
+    tint: {r: 1, g: 0.82, b: 0.6, a: 1}
+  - chapter: Sanjeevani
+    silhouettes:
+    - {fileID: 21300000, guid: b7e3eb9eac89c4720abca0ced7c947be, type: 3}
+    - {fileID: 21300000, guid: e6ca231348bab411fa3735b3bf58bdcb, type: 3}
+    - {fileID: 21300000, guid: 0ad9b58b3ed83486289d80bf362b1278, type: 3}
+    - {fileID: 21300000, guid: b7e3eb9eac89c4720abca0ced7c947be, type: 3}
+    tint: {r: 0.92, g: 0.95, b: 1, a: 1}
+  - chapter: Victory
+    silhouettes:
+    - {fileID: 21300000, guid: 66b7d9fa673024ab9bface92a6a0c836, type: 3}
+    - {fileID: 21300000, guid: ab0fabece5089448dbe0b48f14640dcd, type: 3}
+    - {fileID: 21300000, guid: ea177849ab5724174b69f55b03d18c19, type: 3}
+    - {fileID: 21300000, guid: 122c7477dfb10414da0646276cbe854f, type: 3}
+    tint: {r: 1, g: 0.95, b: 0.8, a: 1}
   secondsBetween: 0.9
   riseSpeed: 3.5
   heightRange: {x: 3, y: 7}
   opacity: 0.22
   tint: {r: 1, g: 0.95, b: 0.85, a: 1}
   sortingOrder: -3
+--- !u!114 &1700000007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c555d6e7b0fc1424ebcbde3cfd6eee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milestones:
+  - title: Rama's Ring
+    story: Take the ring to Sita
+    chapter: 0
+    appearAtMeters: 20
+    requires: -1
+    icon: {fileID: 21300000, guid: 7a494d3660be44dfea29b29a7eda3e22, type: 3}
+  - title: Mainaka's Blessing
+    story: Rest on the golden mountain
+    chapter: 1
+    appearAtMeters: 130
+    requires: -1
+    icon: {fileID: 21300000, guid: cf289838a4936483c8d8f57b7ce72bf8, type: 3}
+  - title: Lankini's Gate
+    story: Slip into the golden city
+    chapter: 2
+    appearAtMeters: 280
+    requires: -1
+    icon: {fileID: 21300000, guid: f1c6cbaccb2714cfa86624f72246aeab, type: 3}
+  - title: Ring for Sita
+    story: Give Rama's ring to Sita
+    chapter: 3
+    appearAtMeters: 430
+    requires: 0
+    icon: {fileID: 21300000, guid: 95ffedca8f59f4d3aa8d9f87b95e8512, type: 3}
+  - title: Hanuman's Gada
+    story: Stand against Ravana's army
+    chapter: 4
+    appearAtMeters: 630
+    requires: -1
+    icon: {fileID: 21300000, guid: 974eb3757f8184e06ae5cad681dfe8e0, type: 3}
+  - title: Light the Fire
+    story: Set Lanka ablaze with your burning tail
+    chapter: 5
+    appearAtMeters: 880
+    requires: -1
+    icon: {fileID: 21300000, guid: 5bf236c973d1a4ce8990068d575a9244, type: 3}
+  - title: Sanjeevani
+    story: Carry the healing herb to Lakshmana
+    chapter: 6
+    appearAtMeters: 1180
+    requires: -1
+    icon: {fileID: 21300000, guid: 88e1f3b5238ec4ce3a70d6959d0a3cde, type: 3}
+  - title: Temple Bell
+    story: Ring the bell of victory
+    chapter: 7
+    appearAtMeters: 1530
+    requires: -1
+    icon: {fileID: 21300000, guid: c5377d88cb7574b18a51c1a00293093a, type: 3}
+  gameCamera: {fileID: 561105923}
+  riseSpeed: 9
+  iconSize: 1.5
+  energyReward: 15
+  retryAfterMeters: 60
+  playAreaHalfWidth: 3.8
+  sortingOrder: 7
 --- !u!1 &1717795543
 GameObject:
   m_ObjectHideFlags: 0

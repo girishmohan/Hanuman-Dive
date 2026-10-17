@@ -35,7 +35,7 @@ let LABELS: [Label] = [
     Label(file: "startStuff/quit.png", text: "QUIT", top: white.0, bottom: white.1),
     Label(file: "startStuff/restart.png", text: "RESTART", top: white.0, bottom: white.1),
     Label(file: "startStuff/start.png", text: "START", top: white.0, bottom: white.1),
-    Label(file: "startStuff/jumpsuitsImgText.png", text: "FORMS", top: saffron.0, bottom: saffron.1),
+    Label(file: "startStuff/jumpsuitsImgText.png", text: "AVATAR", top: saffron.0, bottom: saffron.1),
     Label(file: "startStuff/lastbest.png", text: "LAST BEST", top: white.0, bottom: white.1),
     Label(file: "start3Anim/Last Best 2.png", text: "LAST BEST", top: white.0, bottom: white.1),
     Label(file: "startStuff/loading.png", text: "LOADING", top: white.0, bottom: white.1),

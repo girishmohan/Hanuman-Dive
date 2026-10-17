@@ -1,14 +1,26 @@
 using UnityEngine;
 
+/// <summary>Scenery for one chapter: which silhouettes drift past, and their tint.</summary>
+[System.Serializable]
+public class ChapterScenery
+{
+    public string chapter;
+    public Sprite[] silhouettes;
+    public Color tint = new Color(1f, 0.95f, 0.85f);
+}
+
 /// <summary>
-/// Ramayana scenery drifting up behind the canyon walls while Hanuman falls:
-/// temple gopurams, Lanka towers, palms, lotuses, clouds and mountains as soft
-/// light silhouettes. Rises slower than the walls for a parallax feel.
+/// Ramayana scenery drifting up behind the canyon walls while Hanuman falls, matched
+/// to the current chapter (palms in Kishkindha, waves on the ocean, towers in Lanka,
+/// flames when Lanka burns...). Soft light silhouettes, rising slower than the walls.
 /// </summary>
 public class ramayanaBackdrop : MonoBehaviour
 {
     public Camera gameCamera;
+    [Tooltip("Used when there is no chapter set for the current chapter.")]
     public Sprite[] silhouettes;
+    [Tooltip("One entry per chapter, in chapter order.")]
+    public ChapterScenery[] chapterScenery;
     public float secondsBetween = 0.9f;
     public float riseSpeed = 3.5f;
     public Vector2 heightRange = new Vector2(3f, 7f);
@@ -39,7 +51,7 @@ public class ramayanaBackdrop : MonoBehaviour
 
     private void Update()
     {
-        if (gameCamera == null || silhouettes == null || silhouettes.Length == 0) return;
+        if (gameCamera == null) return;
         timer -= Time.deltaTime;
         if (timer > 0f) return;
         timer = secondsBetween * Random.Range(0.7f, 1.3f);
@@ -53,8 +65,17 @@ public class ramayanaBackdrop : MonoBehaviour
 
     private void Spawn(float y)
     {
-        if (silhouettes == null || silhouettes.Length == 0) return;
-        Sprite sprite = silhouettes[Random.Range(0, silhouettes.Length)];
+        Sprite[] pool = silhouettes;
+        Color chapterTint = tint;
+        int chapter = chapterManager.instance != null ? Mathf.Max(0, chapterManager.instance.CurrentChapterIndex) : 0;
+        if (chapterScenery != null && chapter < chapterScenery.Length
+            && chapterScenery[chapter].silhouettes != null && chapterScenery[chapter].silhouettes.Length > 0)
+        {
+            pool = chapterScenery[chapter].silhouettes;
+            chapterTint = chapterScenery[chapter].tint;
+        }
+        if (pool == null || pool.Length == 0) return;
+        Sprite sprite = pool[Random.Range(0, pool.Length)];
         float halfWidth = gameCamera.orthographicSize * gameCamera.aspect;
 
         GameObject go = new GameObject("Backdrop " + sprite.name);
@@ -67,7 +88,7 @@ public class ramayanaBackdrop : MonoBehaviour
         SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = sprite;
         sr.sortingOrder = sortingOrder;
-        Color c = tint;
+        Color c = chapterTint;
         c.a = opacity * Random.Range(0.6f, 1f);
         sr.color = c;
 
