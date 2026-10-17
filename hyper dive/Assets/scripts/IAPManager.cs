@@ -1,4 +1,5 @@
-﻿ using System;
+#if HD_IAP
+ using System;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
@@ -210,3 +211,31 @@ public class IAPManager : MonoBehaviour, IStoreListener
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
     }
 }
+#else
+using UnityEngine;
+
+// IAP disabled (HD_IAP not defined): stub keeps scene references and button hooks valid.
+public class IAPManager : MonoBehaviour
+{
+    public static IAPManager instance;
+    public int gemAmount;
+
+    private void Awake()
+    {
+        if (instance != null) { Destroy(gameObject); return; }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void InitializePurchasing() { }
+    public void BuyGems7500() { Disabled(); }
+    public void BuyGems15000() { Disabled(); }
+    public void BuyGems50000() { Disabled(); }
+    public void BuyGems75000() { Disabled(); }
+    public void BuyGems100000() { Disabled(); }
+    public void BuyGems250000() { Disabled(); }
+    public void RestorePurchases() { Disabled(); }
+
+    void Disabled() { Debug.Log("IAP disabled in this build"); }
+}
+#endif

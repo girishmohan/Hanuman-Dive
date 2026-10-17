@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Serialization;
 //using GoogleMobileAds.Api;
 public class move : MonoBehaviour
 {
@@ -15,23 +16,35 @@ public class move : MonoBehaviour
     //public float down_speed;
     public Vector3 respawnPoint;
     private Vector3 targetPos;
-    public int health = 0;
+    // Rama Naam energy (was "oxygen"/health): reaching 0 ends the run.
+    [FormerlySerializedAs("health")]
+    public int ramaNaamEnergy = 0;
     //private RewardBasedVideoAd rewardBasedVideo;
     public bool publishingApp;
     public Animator animator;
     public scoreManager gameScore;
-    public UnityEngine.UI.Text healthDisplay;
+    [FormerlySerializedAs("healthDisplay")]
+    public UnityEngine.UI.Text energyDisplay;
+    public string energyLabel = "Rama Naam";
+    private const int energyLabelSize = 13;
     public GameObject gameOver;
     public GameObject toxic_Particle_System;
 
     private Touch touch;
     public float speedModifer = 0.01f;
+    [Tooltip("Arrow keys / A-D speed (world units per second), for playtesting in the editor.")]
+    public float keyboardSpeed = 10f;
+    private Vector3 lastMousePosition;
     //public GameObject effect;
 
     private void Start()
     {
        
         rb = GetComponent<Rigidbody2D>();
+        // Two-line energy readout (number + caption) may exceed the original text box.
+        energyDisplay.horizontalOverflow = HorizontalWrapMode.Overflow;
+        energyDisplay.verticalOverflow = VerticalWrapMode.Overflow;
+        energyDisplay.lineSpacing = 0.8f;
         respawnPoint = transform.position;
     }
 
@@ -40,11 +53,10 @@ public class move : MonoBehaviour
     {
 
 
-        healthDisplay.text = health + "%";
+        ramaNaamEnergy = Mathf.Clamp(ramaNaamEnergy, -10, 100);
+        UpdateEnergyDisplay();
 
-        health = Mathf.Clamp(health, -10, 100);
-
-        if (health <= 0)
+        if (ramaNaamEnergy <= 0)
         {
             gameOver.SetActive(true);
             Destroy(gameObject);
@@ -57,14 +69,28 @@ public class move : MonoBehaviour
             //SceneManager.LoadScene("gameOver");
         }
 
-        //move_with_touch_drag();
-        move_with_touch_drag();
+        if (Input.touchCount > 0)
+        {
+            move_with_touch_drag();
+        }
+        else
+        {
+            // Editor/desktop playtesting: mouse drag works like a finger, arrow keys also steer.
+            move_with_mouse_drag();
+            move_with_keys();
+        }
     }
 
-    public void AddHealth(int numberOfCoins)
+    public void AddEnergy(int amount)
     {
-        health += numberOfCoins;
-        healthDisplay.text = "" + health;
+        ramaNaamEnergy += amount;
+        UpdateEnergyDisplay();
+    }
+
+    void UpdateEnergyDisplay()
+    {
+        // Number on top, small caption underneath so it stays clear of the METERS heading.
+        energyDisplay.text = Mathf.Max(ramaNaamEnergy, 0) + "%\n<size=" + energyLabelSize + ">" + energyLabel.ToUpper() + "</size>";
     }
 
     
@@ -92,6 +118,29 @@ public class move : MonoBehaviour
         }
     }
 
+
+    void move_with_mouse_drag()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            lastMousePosition = Input.mousePosition;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            float dx = Input.mousePosition.x - lastMousePosition.x;
+            lastMousePosition = Input.mousePosition;
+            transform.position = new Vector3(transform.position.x + dx * speedModifer, transform.position.y);
+        }
+    }
+
+    void move_with_keys()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        if (h != 0f)
+        {
+            transform.position = new Vector3(transform.position.x + h * keyboardSpeed * Time.deltaTime, transform.position.y);
+        }
+    }
 
     void move_touch()
     {

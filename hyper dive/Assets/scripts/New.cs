@@ -1,4 +1,5 @@
-﻿using System.Collections;
+#if HD_ADS
+using System.Collections;
 using System.Collections.Generic;
 using GoogleMobileAds.Api;
 using UnityEngine;
@@ -155,3 +156,15 @@ public class New : MonoBehaviour
     // Update is called once per frame
 
 }
+#else
+using UnityEngine;
+
+// Ads disabled (HD_ADS not defined): stub keeps scene references and button hooks valid.
+public class New : MonoBehaviour
+{
+    public bool publishingApp;
+    public void DisplayBannerAds() { }
+    public void LoadIntestellarAds() { }
+    public void DiplayRewardVideo() { }
+}
+#endif

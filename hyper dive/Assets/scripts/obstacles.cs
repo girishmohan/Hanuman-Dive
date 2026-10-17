@@ -30,8 +30,8 @@ public class obstacles : MonoBehaviour
             
             Instantiate(effect, transform.position, Quaternion.identity);
             // the player will take damage
-            other.GetComponent<move>().health -= damage;
-            Debug.Log(other.GetComponent<move>().health);
+            other.GetComponent<move>().ramaNaamEnergy -= damage;
+            Debug.Log(other.GetComponent<move>().ramaNaamEnergy);
             Destroy(gameObject);
             //CamShake.SetTrigger("shake");
         }
