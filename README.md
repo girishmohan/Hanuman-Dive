@@ -103,7 +103,7 @@ These scripts are in `tools/` and run on macOS:
 ## Before publishing
 
 - [x] Permission from Prajwalvv to publish a game based on Hyper Dive (given; record kept).
-- [ ] Credit Prajwalvv inside the game (and on any store listing).
+- [x] Credit Prajwalvv inside the game: main menu and Journey panel (add it to any future store listing too).
 - [x] Muse terms allow commercial use of the generated artwork (terms saved).
 - [x] `Deadly Hazards & Obstacles` art pack is a free asset.
 - [ ] For the App Store only: set your own bundle ID and company name, and re-enable current ad and IAP SDKs with your own IDs.
