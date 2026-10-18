@@ -44,7 +44,11 @@ Distances use the in-game **METERS** counter. Each chapter changes the sky and t
 - **Rakshasas.** Ravana's demon warriors weave upward toward Hanuman from about 12 seconds into every run. Each bump costs 5% energy.
 - **Vanara allies.** Angada, a vanara archer and Jambavan rise between the obstacles every 15 to 25 seconds. Meet one for +10% energy and a cheer.
 - **The original obstacles** are still here: spiked mines, saw blades and canyon walls. The mines hold off for the first 8 seconds.
-- **Eight Hanuman avatars** to unlock with gems in the **AVATAR** shop. Each is the same Hanuman with a different aura.
+- **Eight Hanuman avatars** to unlock with gems in the **AVATAR** shop (500 to 100,000 gems). Each is the same Hanuman with a different aura.
+- **Gems:** diamonds are worth 10 / 25 / 50 / 80 / 90, and each new chapter pays +50, so a decent run earns about 150–250 gems.
+- **Story beats:** a character greets each chapter (Jambavan, the vanara archer, Lanka's guards, Sita, Angada, Rama & Sita) with a line on the banner.
+- **Fair spawning:** a spawn guard makes sure every row of hazards leaves Hanuman a gap.
+- **Why you died:** Game Over names the cause (energy ran out, Patala Lok spikes, the Asuras, Surasa...) with a tip, and first runs show a reminder that RAM tablets refill energy.
 - **Chapter scenery.** The sky and drifting silhouettes follow the story: palms in Kishkindha, waves over the ocean, towers and flags in Lanka, Ashoka trees, flames as Lanka burns, herb mountains, and temples, diyas and bells for Victory.
 - **Original music.** A serene Raag Yaman bansuri over a tanpura drone, as a seamless 73-second loop.
 - **Fits any phone.** It draws edge to edge, and the HUD keeps clear of notches, the Dynamic Island and the home bar.

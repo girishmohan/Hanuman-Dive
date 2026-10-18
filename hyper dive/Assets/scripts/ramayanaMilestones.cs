@@ -31,6 +31,8 @@ public class ramayanaMilestones : MonoBehaviour
     public float riseSpeed = 9f;
     public float iconSize = 1.5f;
     public int energyReward = 15;
+    [Tooltip("Gems for collecting a milestone (0 = none; chapters already pay gems).")]
+    public int gemReward = 0;
     public float retryAfterMeters = 60f;
     [Tooltip("Half-width of the playable channel (world units).")]
     public float playAreaHalfWidth = 3.8f;
@@ -124,9 +126,11 @@ public class ramayanaMilestones : MonoBehaviour
         PlayerPrefs.SetInt(SaveKey(index), 1);
         move hanuman = FindObjectOfType<move>();
         if (hanuman != null) hanuman.AddEnergy(energyReward);
+        if (gemReward > 0) ramayanaRunEvents.AwardGems(gemReward);
         if (chapterManager.instance != null)
         {
-            chapterManager.instance.ShowBanner("Milestone: " + milestones[index].title, milestones[index].story, 3f);
+            chapterManager.instance.ShowBanner("Milestone: " + milestones[index].title,
+                milestones[index].story + (gemReward > 0 ? "  ·  +" + gemReward + " gems" : ""), 3f);
         }
     }
 

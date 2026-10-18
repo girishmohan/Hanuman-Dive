@@ -12,8 +12,15 @@ public class highScoreManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    // The best distance is saved as the run goes, so this includes the run that just ended.
+    float shown = -1f;
     void Update()
     {
-        
+        float best = PlayerPrefs.GetFloat("Highscore");
+        if (best != shown)
+        {
+            shown = best;
+            highscoreText.text = "" + best;
+        }
     }
 }

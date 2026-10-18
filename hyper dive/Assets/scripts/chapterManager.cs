@@ -41,6 +41,14 @@ public class chapterManager : MonoBehaviour
     [Tooltip("Font for the runtime banner.")]
     public Font bannerFont;
 
+    [Header("Story beats and rewards")]
+    [Tooltip("One character per chapter who rises past Hanuman as the chapter begins.")]
+    public Sprite[] storyBeatSprites;
+    [Tooltip("Gems awarded for reaching each new chapter.")]
+    public int chapterGems = 50;
+    [Tooltip("Show the 'catch RAM tablets' tip on a player's first few runs.")]
+    public int hintRuns = 3;
+
     public float Distance { get; private set; }
     public int CurrentChapterIndex { get; private set; }
 
@@ -68,6 +76,11 @@ public class chapterManager : MonoBehaviour
         if (chapterTitleText == null) BuildBanner();
         CurrentChapterIndex = -1;
         ApplyChapter(0);
+
+        // Teach the core loop on the first few runs.
+        int runs = PlayerPrefs.GetInt("RunsStarted", 0);
+        PlayerPrefs.SetInt("RunsStarted", runs + 1);
+        if (runs < hintRuns) Invoke(nameof(ShowEnergyHint), bannerSeconds + 1f);
         if (backgroundCamera != null && hasSkyTarget) backgroundCamera.backgroundColor = skyTarget;
     }
 
@@ -144,7 +157,14 @@ public class chapterManager : MonoBehaviour
         CurrentChapterIndex = index;
         RamayanaChapter chapter = chapters[index];
 
-        ShowBanner(chapter.title, chapter.subtitle, bannerSeconds);
+        string line = index < StoryLines.Length ? StoryLines[index] : chapter.subtitle;
+        if (index > 0 && chapterGems > 0)
+        {
+            ramayanaRunEvents.AwardGems(chapterGems);
+            line += "  ·  +" + chapterGems + " gems";
+        }
+        ShowBanner(chapter.title, line, bannerSeconds);
+        SpawnStoryBeat(index);
 
         skyTarget = chapter.backgroundColor;
         skyTarget.a = 0f;
@@ -154,6 +174,48 @@ public class chapterManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("BestChapter", index);
         }
+    }
+
+    private void ShowEnergyHint()
+    {
+        if (Time.timeScale == 0f) return;
+        ShowBanner("Catch the orange RAM tablets", "They refill your Rama Naam energy", 3.5f);
+    }
+
+    /// <summary>What happens as each chapter begins (who speaks or appears).</summary>
+    public static readonly string[] StoryLines =
+    {
+        "Jambavan: \"Remember your strength, Hanuman!\"",
+        "The vanaras cheer as you leap the ocean",
+        "Lanka's guards keep watch",
+        "Sita waits in Ashoka Vatika",
+        "Ravana's warriors charge!",
+        "Angada: \"Lanka burns! Fly on!\"",
+        "Jambavan: \"Bring the Sanjeevani herb for Lakshmana\"",
+        "Rama and Sita are reunited. Jai Shri Ram!",
+        "The vanara army flies with you",
+    };
+
+    // The chapter's character rises past Hanuman on the left (scenery only: no collider).
+    private void SpawnStoryBeat(int index)
+    {
+        if (storyBeatSprites == null || index >= storyBeatSprites.Length || storyBeatSprites[index] == null) return;
+        Camera cam = backgroundCamera != null ? backgroundCamera : Camera.main;
+        if (cam == null) return;
+        Sprite sprite = storyBeatSprites[index];
+        const float height = 2.6f;
+        float halfW = Mathf.Min(cam.orthographicSize * cam.aspect, 4f);
+        GameObject go = new GameObject("Story " + sprite.name);
+        go.transform.position = new Vector3(cam.transform.position.x - halfW * 0.55f,
+                                            cam.transform.position.y - cam.orthographicSize - height, 0f);
+        float scale = height / Mathf.Max(0.01f, sprite.bounds.size.y);
+        go.transform.localScale = new Vector3(scale, scale, 1f);
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingOrder = 4;
+        ramayanaHazardMover mover = go.AddComponent<ramayanaHazardMover>();
+        mover.riseSpeed = 5f;
+        Destroy(go, (cam.orthographicSize * 2f + height * 2f) / mover.riseSpeed + 1f);
     }
 
     private void SetBanner(string title, string subtitle)

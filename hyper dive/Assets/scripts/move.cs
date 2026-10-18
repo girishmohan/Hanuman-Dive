@@ -35,6 +35,11 @@ public class move : MonoBehaviour
     [Tooltip("Arrow keys / A-D speed (world units per second), for playtesting in the editor.")]
     public float keyboardSpeed = 10f;
     private Vector3 lastMousePosition;
+    [Tooltip("1 = Hanuman follows the finger exactly; higher = faster steering.")]
+    public float dragSensitivity = 1f;
+    private Vector2 lastTouchPosition;
+    private int trackedFinger = -1;
+    private Camera gameCamera;
     //public GameObject effect;
 
     private void Start()
@@ -59,6 +64,7 @@ public class move : MonoBehaviour
         if (ramaNaamEnergy <= 0)
         {
             gameOver.SetActive(true);
+            ramayanaRunEvents.ShowDeathCause(gameOver);
             Destroy(gameObject);
             Time.timeScale = 0f;
             //highScore_save();
@@ -111,11 +117,34 @@ public class move : MonoBehaviour
         {
             touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Moved)
+            // Measure the finger's movement from its positions: touch.deltaPosition is
+            // unreliable in browsers (it comes through reversed on iPhone Safari).
+            if (touch.phase == TouchPhase.Began || touch.fingerId != trackedFinger)
             {
-                transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * speedModifer, transform.position.y);
+                trackedFinger = touch.fingerId;
+                lastTouchPosition = touch.position;
+                return;
             }
+            float dx = touch.position.x - lastTouchPosition.x;
+            lastTouchPosition = touch.position;
+            if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) trackedFinger = -1;
+            SteerByScreenPixels(dx);
         }
+    }
+
+    // Moves Hanuman by a horizontal screen distance, so he follows the finger the same
+    // way on every screen size and pixel density.
+    void SteerByScreenPixels(float dxPixels)
+    {
+        if (gameCamera == null)
+        {
+            GameObject tagged = GameObject.FindGameObjectWithTag("AniCam");
+            gameCamera = tagged != null ? tagged.GetComponent<Camera>() : Camera.main;
+        }
+        float worldPerPixel = gameCamera != null
+            ? gameCamera.orthographicSize * 2f * gameCamera.aspect / Mathf.Max(1, Screen.width)
+            : speedModifer;
+        transform.position = new Vector3(transform.position.x + dxPixels * worldPerPixel * dragSensitivity, transform.position.y);
     }
 
 
@@ -129,7 +158,7 @@ public class move : MonoBehaviour
         {
             float dx = Input.mousePosition.x - lastMousePosition.x;
             lastMousePosition = Input.mousePosition;
-            transform.position = new Vector3(transform.position.x + dx * speedModifer, transform.position.y);
+            SteerByScreenPixels(dx);
         }
     }
 

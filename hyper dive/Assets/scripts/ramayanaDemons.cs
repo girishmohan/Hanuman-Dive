@@ -78,8 +78,16 @@ public class ramayanaDemons : MonoBehaviour
         hit.offset = new Vector2(0f, -sprite.bounds.size.y * 0.05f);
         ramayanaHazardHit h = body.AddComponent<ramayanaHazardHit>();
         h.energyChange = -damage;
+        h.cause = ramayanaRunEvents.Asuras;
         h.removeOnTouch = root;
 
+        // Keep a way through: skip this demon if it would close a row, and try again shortly.
+        if (!ramayanaSpawnGuard.Admit(root, riseSpeed, weaveWidth))
+        {
+            Destroy(root);
+            timer = 0.5f;
+            return;
+        }
         float travel = gameCamera.orthographicSize * 2f + height * 3f;
         Destroy(root, travel / riseSpeed + 1f);
     }

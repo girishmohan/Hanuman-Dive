@@ -81,12 +81,20 @@ public class ramayanaObstacleSet : MonoBehaviour
         } while (pattern == lastPattern);
         lastPattern = pattern;
 
+        GameObject made = null;
         switch (pattern)
         {
-            case 0: SpawnSurasa(centerX, spawnY, halfWidth, camHalfWidth); break;
-            case 1: SpawnSimhika(centerX, spawnY, halfWidth); break;
-            case 2: SpawnRocks(centerX, spawnY, halfWidth); break;
-            case 3: SpawnMainaka(centerX, spawnY, halfWidth); break;
+            case 0: made = SpawnSurasa(centerX, spawnY, halfWidth, camHalfWidth); break;
+            case 1: made = SpawnSimhika(centerX, spawnY, halfWidth); break;
+            case 2: made = SpawnRocks(centerX, spawnY, halfWidth); break;
+            case 3: SpawnMainaka(centerX, spawnY, halfWidth); break;   // a pickup, never blocked
+        }
+        // Keep a way through: skip this hazard if it would close a row, and try again shortly.
+        float drift = pattern == 1 ? 1.5f : 0f;   // Simhika drifts toward Hanuman
+        if (made != null && !ramayanaSpawnGuard.Admit(made, riseSpeed, drift))
+        {
+            Destroy(made);
+            timer = 0.3f;
         }
     }
 
@@ -106,7 +114,7 @@ public class ramayanaObstacleSet : MonoBehaviour
         return chapterManager.instance.CurrentChapterIndex == chapterIndex;
     }
 
-    private void SpawnSurasa(float centerX, float y, float halfWidth, float camHalfWidth)
+    private GameObject SpawnSurasa(float centerX, float y, float halfWidth, float camHalfWidth)
     {
         // Gap stays inside the channel; the jaws reach the screen edges.
         float gapCenter = Random.Range(centerX - halfWidth + surasaGapWidth, centerX + halfWidth - surasaGapWidth);
@@ -125,9 +133,10 @@ public class ramayanaObstacleSet : MonoBehaviour
         BuildPart(jaws.transform, "Lower Jaw", false,
             new Vector2((gapRight + right) / 2f, 0f), new Vector2(right - gapRight, 0.6f),
             surasaColor, -surasaDamage);
+        return jaws;
     }
 
-    private void SpawnSimhika(float centerX, float y, float halfWidth)
+    private GameObject SpawnSimhika(float centerX, float y, float halfWidth)
     {
         float x = Random.Range(centerX - halfWidth + simhikaRadius, centerX + halfWidth - simhikaRadius);
         GameObject root = new GameObject("Simhika's Shadow");
@@ -135,9 +144,10 @@ public class ramayanaObstacleSet : MonoBehaviour
         AddMover(root, simhikaChaseSpeed);
         BuildPart(root.transform, "Shadow", true, Vector2.zero,
             Vector2.one * simhikaRadius * 2f, simhikaColor, -simhikaDamage);
+        return root;
     }
 
-    private void SpawnRocks(float centerX, float y, float halfWidth)
+    private GameObject SpawnRocks(float centerX, float y, float halfWidth)
     {
         GameObject root = new GameObject("Ocean Rocks");
         root.transform.position = new Vector3(0f, y, 0f);
@@ -151,6 +161,7 @@ public class ramayanaObstacleSet : MonoBehaviour
                 Vector2.one * size, rockColor, -rockDamage);
             rock.localRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 90f));
         }
+        return root;
     }
 
     private void SpawnMainaka(float centerX, float y, float halfWidth)
@@ -192,6 +203,10 @@ public class ramayanaObstacleSet : MonoBehaviour
 
         ramayanaHazardHit hit = part.AddComponent<ramayanaHazardHit>();
         hit.energyChange = energyChange;
+        hit.cause = partName == "Rock" ? "The ocean rocks got you"
+                  : partName == "Shadow" ? "Simhika's shadow caught you"
+                  : partName.EndsWith("Jaw") ? "Surasa's jaws caught you"
+                  : ramayanaRunEvents.Spikes;
         // Rocks vanish one at a time; other patterns disappear as a whole (e.g. both jaws).
         hit.removeOnTouch = partName == "Rock" ? part : parent.gameObject;
         return part.transform;
@@ -264,6 +279,8 @@ public class ramayanaHazardHit : MonoBehaviour
 {
     public int energyChange;
     public GameObject removeOnTouch;
+    [Tooltip("Shown on Game Over if this is what ended the run.")]
+    public string cause;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -271,6 +288,7 @@ public class ramayanaHazardHit : MonoBehaviour
         move hanuman = other.GetComponent<move>();
         if (hanuman == null) return;
 
+        if (energyChange < 0) ramayanaRunEvents.Hurt(cause);
         hanuman.AddEnergy(energyChange);
         Destroy(removeOnTouch != null ? removeOnTouch : gameObject);
     }

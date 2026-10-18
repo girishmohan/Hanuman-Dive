@@ -30,6 +30,10 @@ public class obstacles : MonoBehaviour
             
             Instantiate(effect, transform.position, Quaternion.identity);
             // the player will take damage
+            string n = gameObject.name.ToLower();
+            ramayanaRunEvents.Hurt(n.Contains("saw") ? "A spinning blade got you"
+                : n.Contains("ninja") ? "A rakshasa's throwing star got you"
+                : ramayanaRunEvents.Spikes);
             other.GetComponent<move>().ramaNaamEnergy -= damage;
             Debug.Log(other.GetComponent<move>().ramaNaamEnergy);
             Destroy(gameObject);

@@ -21,6 +21,7 @@ public class scoreDamage : MonoBehaviour
             
             //Instantiate(effect, transform.position, Quaternion.identity);
             // the player will take damage
+            ramayanaRunEvents.Hurt(ramayanaRunEvents.EnergyRanOut);
             other.GetComponent<move>().ramaNaamEnergy -= damage;
             Debug.Log(other.GetComponent<move>().ramaNaamEnergy);
             Destroy(gameObject);

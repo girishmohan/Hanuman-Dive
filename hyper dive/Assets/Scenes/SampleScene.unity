@@ -1999,6 +1999,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &496234568
 Rigidbody2D:
   serializedVersion: 4
@@ -2685,6 +2686,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &602386616
 Rigidbody2D:
   serializedVersion: 4
@@ -3224,6 +3226,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &690199323
 Rigidbody2D:
   serializedVersion: 4
@@ -5206,6 +5209,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &1173742667
 Rigidbody2D:
   serializedVersion: 4
@@ -5491,6 +5495,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!1 &1210680456
 GameObject:
   m_ObjectHideFlags: 0
@@ -6057,6 +6062,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &1363874434
 Rigidbody2D:
   serializedVersion: 4
@@ -7009,6 +7015,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &1539935224
 Rigidbody2D:
   serializedVersion: 4
@@ -7695,6 +7702,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &1610952444
 Rigidbody2D:
   serializedVersion: 4
@@ -8275,6 +8283,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &1659868963
 Rigidbody2D:
   serializedVersion: 4
@@ -8552,6 +8561,18 @@ MonoBehaviour:
   distanceText: {fileID: 0}
   backgroundCamera: {fileID: 561105923}
   bannerFont: {fileID: 12800000, guid: 6bff22afa3ab4470baa6ff4f85db2d2f, type: 3}
+  storyBeatSprites:
+  - {fileID: 21300000, guid: 9f8623714543949b48be0bb1056358f5, type: 3}
+  - {fileID: 21300000, guid: 0fc36a98c0ad94ec0b521fedc270ee61, type: 3}
+  - {fileID: 21300000, guid: 1ea9c1edab16b4b209a19cb93ce390f3, type: 3}
+  - {fileID: 21300000, guid: 474c1029793e844c785f25f6db37f8d1, type: 3}
+  - {fileID: 21300000, guid: f83e26aaf13d54a2783fc041eea6b7bf, type: 3}
+  - {fileID: 21300000, guid: 84bc47eb15c7f4049be2b5f788c1b2ca, type: 3}
+  - {fileID: 21300000, guid: 9f8623714543949b48be0bb1056358f5, type: 3}
+  - {fileID: 21300000, guid: d7417f79b70814ee6bbe3bdee8fcb85a, type: 3}
+  - {fileID: 21300000, guid: 0fc36a98c0ad94ec0b521fedc270ee61, type: 3}
+  chapterGems: 50
+  hintRuns: 3
 --- !u!114 &1700000004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8772,6 +8793,7 @@ MonoBehaviour:
   riseSpeed: 9
   iconSize: 1.5
   energyReward: 15
+  gemReward: 0
   retryAfterMeters: 60
   playAreaHalfWidth: 3.8
   sortingOrder: 7
@@ -9976,6 +9998,7 @@ MonoBehaviour:
     type: 3}
   speedModifer: 0.009
   keyboardSpeed: 10
+  dragSensitivity: 1
 --- !u!50 &1910289583
 Rigidbody2D:
   serializedVersion: 4

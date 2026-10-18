@@ -253,7 +253,7 @@ public class shopManager : MonoBehaviour
     //2500
     public void For2500IfStatement()
     {
-        if (gemAmount >= 2500 && is2500Sold == 0)
+        if (gemAmount >= 500 && is2500Sold == 0)
         {
             Button2500.interactable = true;
         }
@@ -267,7 +267,7 @@ public class shopManager : MonoBehaviour
     //5000
     public void For5000IfStatement()
     {
-        if (gemAmount >= 5000 && is5000Sold == 0)
+        if (gemAmount >= 1500 && is5000Sold == 0)
         {
             Button5000.interactable = true;
         }
@@ -280,7 +280,7 @@ public class shopManager : MonoBehaviour
     //7500
     public void For7500IfStatement()
     {
-        if (gemAmount >= 7500 && is7500Sold == 0)
+        if (gemAmount >= 3000 && is7500Sold == 0)
         {
             Button7500.interactable = true;
         }
@@ -293,7 +293,7 @@ public class shopManager : MonoBehaviour
     //15000
     public void For15000IfStatement()
     {
-        if (gemAmount >= 15000 && is15000Sold == 0)
+        if (gemAmount >= 6000 && is15000Sold == 0)
         {
             Button15000.interactable = true;
         }
@@ -306,7 +306,7 @@ public class shopManager : MonoBehaviour
     //50000
     public void For50000IfStatement()
     {
-        if (gemAmount >= 50000 && is50000Sold == 0)
+        if (gemAmount >= 12000 && is50000Sold == 0)
         {
             Button50000.interactable = true;
         }
@@ -319,7 +319,7 @@ public class shopManager : MonoBehaviour
     //75000
     public void For75000IfStatement()
     {
-        if (gemAmount >= 75000 && is75000Sold == 0)
+        if (gemAmount >= 25000 && is75000Sold == 0)
         {
             Button75000.interactable = true;
         }
@@ -332,7 +332,7 @@ public class shopManager : MonoBehaviour
     //100000
     public void For100000IfStatement()
     {
-        if (gemAmount >= 100000 && is100000Sold == 0)
+        if (gemAmount >= 50000 && is100000Sold == 0)
         {
             Button100000.interactable = true;
         }
@@ -345,7 +345,7 @@ public class shopManager : MonoBehaviour
     //150000
     public void For150000IfStatement()
     {
-        if (gemAmount >= 150000 && is150000Sold == 0)
+        if (gemAmount >= 100000 && is150000Sold == 0)
         {
             Button150000.interactable = true;
         }
@@ -360,7 +360,7 @@ public class shopManager : MonoBehaviour
     //2500
     public void buy2500Skin()
     {
-        gemAmount -= 2500;
+        gemAmount -= 500;
         //PlayerPrefs.SetInt("Is2500Sold", 1);
         boughtButton2500.gameObject.SetActive(true);
         Button2500.gameObject.SetActive(false);
@@ -370,7 +370,7 @@ public class shopManager : MonoBehaviour
     //5000
     public void buy5000Skin()
     {
-        gemAmount -= 5000;
+        gemAmount -= 1500;
         boughtButton5000.gameObject.SetActive(true);
         Button5000.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
@@ -379,7 +379,7 @@ public class shopManager : MonoBehaviour
     //7500
     public void buy7500Skin()
     {
-        gemAmount -= 7500;
+        gemAmount -= 3000;
         boughtButton7500.gameObject.SetActive(true);
         Button7500.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
@@ -388,7 +388,7 @@ public class shopManager : MonoBehaviour
     //15000
     public void buy15000Skin()
     {
-        gemAmount -= 15000;
+        gemAmount -= 6000;
         boughtButton15000.gameObject.SetActive(true);
         Button15000.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
@@ -397,7 +397,7 @@ public class shopManager : MonoBehaviour
     //50000
     public void buy50000Skin()
     {
-        gemAmount -= 50000;
+        gemAmount -= 12000;
         boughtButton50000.gameObject.SetActive(true);
         Button50000.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
@@ -406,7 +406,7 @@ public class shopManager : MonoBehaviour
     //75000
     public void buy75000Skin()
     {
-        gemAmount -= 75000;
+        gemAmount -= 25000;
         boughtButton75000.gameObject.SetActive(true);
         Button75000.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
@@ -415,7 +415,7 @@ public class shopManager : MonoBehaviour
     //100000
     public void buy100000Skin()
     {
-        gemAmount -= 100000;
+        gemAmount -= 50000;
         boughtButton100000.gameObject.SetActive(true);
         Button100000.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
@@ -424,7 +424,7 @@ public class shopManager : MonoBehaviour
     //150000
     public void buy150000Skin()
     {
-        gemAmount -= 150000;
+        gemAmount -= 100000;
         boughtButton150000.gameObject.SetActive(true);
         Button150000.gameObject.SetActive(false);
         PlayerPrefs.SetInt("GemAmount", gemAmount);
