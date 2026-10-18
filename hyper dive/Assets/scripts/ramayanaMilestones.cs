@@ -12,10 +12,12 @@ public class RamayanaMilestone
     [Tooltip("Index of a milestone that must be collected earlier in the same run (-1 = none).")]
     public int requires = -1;
     public Sprite icon;
+    [Tooltip("Size multiplier for the pickup: characters (Menaka, Sita, Rama & Sita) are drawn larger than icons.")]
+    public float iconScale = 1f;
 }
 
 /// <summary>
-/// One milestone per chapter (Rama's ring, Mainaka's blessing, Lanka's fire...).
+/// One milestone per chapter (Rama's ring, Menaka's blessing, Lanka's fire, Rama and Sita...).
 /// Each appears once its METERS reading is reached; if Hanuman misses it, it comes
 /// back a little later while the chapter lasts. Completed milestones are saved and
 /// shown on the main menu's Journey panel.
@@ -84,7 +86,8 @@ public class ramayanaMilestones : MonoBehaviour
         RamayanaMilestone m = milestones[index];
         float halfWidth = Mathf.Min(gameCamera.orthographicSize * gameCamera.aspect, playAreaHalfWidth);
         float x = gameCamera.transform.position.x + Random.Range(-halfWidth, halfWidth) * 0.7f;
-        float y = gameCamera.transform.position.y - gameCamera.orthographicSize - iconSize;
+        float size = iconSize * Mathf.Max(0.1f, m.iconScale);
+        float y = gameCamera.transform.position.y - gameCamera.orthographicSize - size;
 
         GameObject root = new GameObject("Milestone " + m.title);
         root.transform.position = new Vector3(x, y, 0f);
@@ -95,7 +98,7 @@ public class ramayanaMilestones : MonoBehaviour
         body.transform.SetParent(root.transform, false);
         if (m.icon != null)
         {
-            float scale = iconSize / Mathf.Max(0.01f, m.icon.bounds.size.y);
+            float scale = size / Mathf.Max(0.01f, m.icon.bounds.size.y);
             body.transform.localScale = new Vector3(scale, scale, 1f);
             SpriteRenderer sr = body.AddComponent<SpriteRenderer>();
             sr.sprite = m.icon;
@@ -108,7 +111,7 @@ public class ramayanaMilestones : MonoBehaviour
         pickup.index = index;
         pickup.root = root;
 
-        float travel = gameCamera.orthographicSize * 2f + iconSize * 3f;
+        float travel = gameCamera.orthographicSize * 2f + size * 3f;
         ramayanaMilestoneExpiry expiry = root.AddComponent<ramayanaMilestoneExpiry>();
         expiry.index = index;
         expiry.seconds = travel / riseSpeed + 0.5f;
@@ -140,13 +143,13 @@ public class ramayanaMilestones : MonoBehaviour
         return new RamayanaMilestone[]
         {
             new RamayanaMilestone { title = "Rama's Ring",        story = "Take the ring to Sita",                 chapter = 0, appearAtMeters = 20 },
-            new RamayanaMilestone { title = "Mainaka's Blessing", story = "Rest on the golden mountain",           chapter = 1, appearAtMeters = 180 },
+            new RamayanaMilestone { title = "Menaka's Blessing",  story = "A blessing for the ocean crossing",     chapter = 1, appearAtMeters = 180, iconScale = 1.6f },
             new RamayanaMilestone { title = "Lankini's Gate",     story = "Slip into the golden city",             chapter = 2, appearAtMeters = 430 },
-            new RamayanaMilestone { title = "Ring for Sita",      story = "Give Rama's ring to Sita",              chapter = 3, appearAtMeters = 730, requires = 0 },
+            new RamayanaMilestone { title = "Ring for Sita",      story = "Give Rama's ring to Sita",              chapter = 3, appearAtMeters = 730, requires = 0, iconScale = 1.6f },
             new RamayanaMilestone { title = "Hanuman's Gada",     story = "Stand against Ravana's army",           chapter = 4, appearAtMeters = 1030 },
             new RamayanaMilestone { title = "Light the Fire",     story = "Set Lanka ablaze with your burning tail", chapter = 5, appearAtMeters = 1430 },
             new RamayanaMilestone { title = "Sanjeevani",         story = "Carry the healing herb to Lakshmana",   chapter = 6, appearAtMeters = 1830 },
-            new RamayanaMilestone { title = "Temple Bell",        story = "Ring the bell of victory",              chapter = 7, appearAtMeters = 2330 },
+            new RamayanaMilestone { title = "Rama and Sita Reunited", story = "Jai Shri Ram",                     chapter = 7, appearAtMeters = 2330, iconScale = 1.8f },
         };
     }
 }

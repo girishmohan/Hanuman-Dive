@@ -3133,13 +3133,13 @@ MonoBehaviour:
   font: {fileID: 12800000, guid: 6bff22afa3ab4470baa6ff4f85db2d2f, type: 3}
   milestoneIcons:
   - {fileID: 21300000, guid: 7a494d3660be44dfea29b29a7eda3e22, type: 3}
-  - {fileID: 21300000, guid: cf289838a4936483c8d8f57b7ce72bf8, type: 3}
+  - {fileID: 21300000, guid: c2f84592892ff430585886f9ad3bc0ec, type: 3}
   - {fileID: 21300000, guid: f1c6cbaccb2714cfa86624f72246aeab, type: 3}
-  - {fileID: 21300000, guid: 95ffedca8f59f4d3aa8d9f87b95e8512, type: 3}
+  - {fileID: 21300000, guid: 474c1029793e844c785f25f6db37f8d1, type: 3}
   - {fileID: 21300000, guid: 974eb3757f8184e06ae5cad681dfe8e0, type: 3}
   - {fileID: 21300000, guid: 5bf236c973d1a4ce8990068d575a9244, type: 3}
   - {fileID: 21300000, guid: 88e1f3b5238ec4ce3a70d6959d0a3cde, type: 3}
-  - {fileID: 21300000, guid: c5377d88cb7574b18a51c1a00293093a, type: 3}
+  - {fileID: 21300000, guid: d7417f79b70814ee6bbe3bdee8fcb85a, type: 3}
   nextGoalText: {fileID: 1229167147}
 --- !u!1 &1274049410
 GameObject:

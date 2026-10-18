@@ -8605,7 +8605,7 @@ MonoBehaviour:
   riseSpeed: 11
   weaveWidth: 1.6
   weaveSpeed: 1.8
-  height: 2.2
+  height: 2.6
   playAreaHalfWidth: 4.2
   sortingOrder: 6
 --- !u!114 &1700000006
@@ -8717,48 +8717,56 @@ MonoBehaviour:
     appearAtMeters: 20
     requires: -1
     icon: {fileID: 21300000, guid: 7a494d3660be44dfea29b29a7eda3e22, type: 3}
-  - title: Mainaka's Blessing
-    story: Rest on the golden mountain
+    iconScale: 1
+  - title: Menaka's Blessing
+    story: A blessing for the ocean crossing
     chapter: 1
     appearAtMeters: 180
     requires: -1
-    icon: {fileID: 21300000, guid: cf289838a4936483c8d8f57b7ce72bf8, type: 3}
+    icon: {fileID: 21300000, guid: c2f84592892ff430585886f9ad3bc0ec, type: 3}
+    iconScale: 1.6
   - title: Lankini's Gate
     story: Slip into the golden city
     chapter: 2
     appearAtMeters: 430
     requires: -1
     icon: {fileID: 21300000, guid: f1c6cbaccb2714cfa86624f72246aeab, type: 3}
+    iconScale: 1
   - title: Ring for Sita
     story: Give Rama's ring to Sita
     chapter: 3
     appearAtMeters: 730
     requires: 0
-    icon: {fileID: 21300000, guid: 95ffedca8f59f4d3aa8d9f87b95e8512, type: 3}
+    icon: {fileID: 21300000, guid: 474c1029793e844c785f25f6db37f8d1, type: 3}
+    iconScale: 1.6
   - title: Hanuman's Gada
     story: Stand against Ravana's army
     chapter: 4
     appearAtMeters: 1030
     requires: -1
     icon: {fileID: 21300000, guid: 974eb3757f8184e06ae5cad681dfe8e0, type: 3}
+    iconScale: 1
   - title: Light the Fire
     story: Set Lanka ablaze with your burning tail
     chapter: 5
     appearAtMeters: 1430
     requires: -1
     icon: {fileID: 21300000, guid: 5bf236c973d1a4ce8990068d575a9244, type: 3}
+    iconScale: 1
   - title: Sanjeevani
     story: Carry the healing herb to Lakshmana
     chapter: 6
     appearAtMeters: 1830
     requires: -1
     icon: {fileID: 21300000, guid: 88e1f3b5238ec4ce3a70d6959d0a3cde, type: 3}
-  - title: Temple Bell
-    story: Ring the bell of victory
+    iconScale: 1
+  - title: Rama and Sita Reunited
+    story: Jai Shri Ram
     chapter: 7
     appearAtMeters: 2330
     requires: -1
-    icon: {fileID: 21300000, guid: c5377d88cb7574b18a51c1a00293093a, type: 3}
+    icon: {fileID: 21300000, guid: d7417f79b70814ee6bbe3bdee8fcb85a, type: 3}
+    iconScale: 1.8
   gameCamera: {fileID: 561105923}
   riseSpeed: 9
   iconSize: 1.5
