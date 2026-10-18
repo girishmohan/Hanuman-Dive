@@ -186,14 +186,18 @@ public class chapterManager : MonoBehaviour
         RectTransform rt = (RectTransform)go.transform;
         rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.6f);
         rt.anchoredPosition = new Vector2(0f, y);
-        rt.sizeDelta = new Vector2(760f, 80f);
+        rt.sizeDelta = new Vector2(760f, size * 1.6f);
         Text t = go.AddComponent<Text>();
         t.font = bannerFont != null ? bannerFont : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         t.fontSize = size;
         t.color = color;
         t.alignment = TextAnchor.MiddleCenter;
-        t.horizontalOverflow = HorizontalWrapMode.Overflow;
-        t.verticalOverflow = VerticalWrapMode.Overflow;
+        // Shrink long chapter names to fit the screen width.
+        t.resizeTextForBestFit = true;
+        t.resizeTextMinSize = size / 2;
+        t.resizeTextMaxSize = size;
+        t.horizontalOverflow = HorizontalWrapMode.Wrap;
+        t.verticalOverflow = VerticalWrapMode.Truncate;
         t.raycastTarget = false;
         Outline o = go.AddComponent<Outline>();
         o.effectColor = new Color(0.16f, 0.07f, 0.03f, 0.95f);
@@ -205,20 +209,21 @@ public class chapterManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The chapters of the Ramayana, in METERS. Tuned so the early story is reachable.
+    /// The levels of Hanuman's journey, in METERS. "Infinite Ram" is the endless stage after Victory.
     /// </summary>
     public static RamayanaChapter[] DefaultChapters()
     {
         return new RamayanaChapter[]
         {
-            new RamayanaChapter { title = "Kishkindha",      subtitle = "Take Rama's ring for Sita",       startDistance = 0f,    backgroundColor = new Color(0.62f, 0.82f, 0.58f) },
-            new RamayanaChapter { title = "The Great Leap",  subtitle = "Across the ocean to Lanka",       startDistance = 100f,  backgroundColor = new Color(0.45f, 0.70f, 0.90f) },
-            new RamayanaChapter { title = "Lanka",           subtitle = "The golden city of Ravana",       startDistance = 250f,  backgroundColor = new Color(0.92f, 0.76f, 0.42f) },
-            new RamayanaChapter { title = "Ashoka Vatika",   subtitle = "Sita waits in the grove",         startDistance = 400f,  backgroundColor = new Color(0.55f, 0.80f, 0.62f) },
-            new RamayanaChapter { title = "Rakshasa Battle", subtitle = "Ravana's warriors attack",        startDistance = 600f,  backgroundColor = new Color(0.72f, 0.42f, 0.42f) },
-            new RamayanaChapter { title = "Lanka Burns",     subtitle = "Hanuman's tail sets Lanka ablaze", startDistance = 850f,  backgroundColor = new Color(0.95f, 0.55f, 0.30f) },
-            new RamayanaChapter { title = "Sanjeevani",      subtitle = "Carry the mountain of herbs",     startDistance = 1150f, backgroundColor = new Color(0.52f, 0.48f, 0.72f) },
-            new RamayanaChapter { title = "Victory",         subtitle = "Jai Shri Ram",                    startDistance = 1500f, backgroundColor = new Color(1.00f, 0.84f, 0.55f) },
+            new RamayanaChapter { title = "Hanuman Leaves in Search of Sita", subtitle = "Carry Rama's ring",             startDistance = 0f,    backgroundColor = new Color(0.62f, 0.82f, 0.58f) },
+            new RamayanaChapter { title = "The Great Leap",                   subtitle = "Across the ocean to Lanka",     startDistance = 150f,  backgroundColor = new Color(0.45f, 0.70f, 0.90f) },
+            new RamayanaChapter { title = "The Golden City of Ravana",        subtitle = "Lanka",                         startDistance = 400f,  backgroundColor = new Color(0.92f, 0.76f, 0.42f) },
+            new RamayanaChapter { title = "The Search for Sita",              subtitle = "Ashoka Vatika",                 startDistance = 700f,  backgroundColor = new Color(0.55f, 0.80f, 0.62f) },
+            new RamayanaChapter { title = "Rakshasa Battle",                  subtitle = "Ravana's warriors attack",      startDistance = 1000f, backgroundColor = new Color(0.72f, 0.42f, 0.42f) },
+            new RamayanaChapter { title = "Lanka Burns",                      subtitle = "Hanuman's tail sets Lanka ablaze", startDistance = 1400f, backgroundColor = new Color(0.95f, 0.55f, 0.30f) },
+            new RamayanaChapter { title = "The Mountain of Healing Herbs",    subtitle = "Sanjeevani for Lakshmana",      startDistance = 1800f, backgroundColor = new Color(0.52f, 0.48f, 0.72f) },
+            new RamayanaChapter { title = "Victory",                          subtitle = "Jai Shri Ram",                  startDistance = 2300f, backgroundColor = new Color(1.00f, 0.84f, 0.55f) },
+            new RamayanaChapter { title = "Infinite Ram",                     subtitle = "Keep chanting, keep flying",    startDistance = 2500f, backgroundColor = new Color(0.98f, 0.70f, 0.40f) },
         };
     }
 }

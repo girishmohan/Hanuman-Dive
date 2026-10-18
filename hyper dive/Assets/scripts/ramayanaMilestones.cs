@@ -134,19 +134,19 @@ public class ramayanaMilestones : MonoBehaviour
         nextAppear[index] = meters + retryAfterMeters;
     }
 
-    /// <summary>The story goals, one per chapter (chapter starts: 0, 100, 250, 400, 600, 850, 1150, 1500 m).</summary>
+    /// <summary>The story goals, one per chapter (chapter starts: 0, 150, 400, 700, 1000, 1400, 1800, 2300 m; Infinite Ram has none).</summary>
     public static RamayanaMilestone[] Defaults()
     {
         return new RamayanaMilestone[]
         {
             new RamayanaMilestone { title = "Rama's Ring",        story = "Take the ring to Sita",                 chapter = 0, appearAtMeters = 20 },
-            new RamayanaMilestone { title = "Mainaka's Blessing", story = "Rest on the golden mountain",           chapter = 1, appearAtMeters = 130 },
-            new RamayanaMilestone { title = "Lankini's Gate",     story = "Slip into the golden city",             chapter = 2, appearAtMeters = 280 },
-            new RamayanaMilestone { title = "Ring for Sita",      story = "Give Rama's ring to Sita",              chapter = 3, appearAtMeters = 430, requires = 0 },
-            new RamayanaMilestone { title = "Hanuman's Gada",     story = "Stand against Ravana's army",           chapter = 4, appearAtMeters = 630 },
-            new RamayanaMilestone { title = "Light the Fire",     story = "Set Lanka ablaze with your burning tail", chapter = 5, appearAtMeters = 880 },
-            new RamayanaMilestone { title = "Sanjeevani",         story = "Carry the healing herb to Lakshmana",   chapter = 6, appearAtMeters = 1180 },
-            new RamayanaMilestone { title = "Temple Bell",        story = "Ring the bell of victory",              chapter = 7, appearAtMeters = 1530 },
+            new RamayanaMilestone { title = "Mainaka's Blessing", story = "Rest on the golden mountain",           chapter = 1, appearAtMeters = 180 },
+            new RamayanaMilestone { title = "Lankini's Gate",     story = "Slip into the golden city",             chapter = 2, appearAtMeters = 430 },
+            new RamayanaMilestone { title = "Ring for Sita",      story = "Give Rama's ring to Sita",              chapter = 3, appearAtMeters = 730, requires = 0 },
+            new RamayanaMilestone { title = "Hanuman's Gada",     story = "Stand against Ravana's army",           chapter = 4, appearAtMeters = 1030 },
+            new RamayanaMilestone { title = "Light the Fire",     story = "Set Lanka ablaze with your burning tail", chapter = 5, appearAtMeters = 1430 },
+            new RamayanaMilestone { title = "Sanjeevani",         story = "Carry the healing herb to Lakshmana",   chapter = 6, appearAtMeters = 1830 },
+            new RamayanaMilestone { title = "Temple Bell",        story = "Ring the bell of victory",              chapter = 7, appearAtMeters = 2330 },
         };
     }
 }

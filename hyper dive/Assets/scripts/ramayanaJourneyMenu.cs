@@ -79,7 +79,7 @@ public class ramayanaJourneyMenu : MonoBehaviour
               "Best: " + Mathf.FloorToInt(best) + " m   ·   Milestones " + done + "/" + milestones.Length,
               30, Cream, TextAnchor.MiddleCenter);
 
-        const float rowHeight = 132f;
+        const float rowHeight = 118f;
         for (int i = 0; i < chapters.Length; i++)
         {
             bool reached = best >= chapters[i].startDistance;
@@ -163,8 +163,12 @@ public class ramayanaJourneyMenu : MonoBehaviour
         t.fontSize = size;
         t.color = color;
         t.alignment = align;
+        // Shrink to fit so long chapter names stay on their row.
+        t.resizeTextForBestFit = true;
+        t.resizeTextMinSize = Mathf.Max(14, size / 2);
+        t.resizeTextMaxSize = size;
         t.horizontalOverflow = HorizontalWrapMode.Wrap;
-        t.verticalOverflow = VerticalWrapMode.Overflow;
+        t.verticalOverflow = VerticalWrapMode.Truncate;
         t.raycastTarget = false;
         Outline o = rt.gameObject.AddComponent<Outline>();
         o.effectColor = new Color(0.12f, 0.05f, 0.02f, 0.9f);

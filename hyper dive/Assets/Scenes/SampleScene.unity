@@ -8684,6 +8684,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ea177849ab5724174b69f55b03d18c19, type: 3}
     - {fileID: 21300000, guid: 122c7477dfb10414da0646276cbe854f, type: 3}
     tint: {r: 1, g: 0.95, b: 0.8, a: 1}
+  - chapter: Infinite Ram
+    silhouettes:
+    - {fileID: 21300000, guid: ab0fabece5089448dbe0b48f14640dcd, type: 3}
+    - {fileID: 21300000, guid: ea177849ab5724174b69f55b03d18c19, type: 3}
+    - {fileID: 21300000, guid: 66b7d9fa673024ab9bface92a6a0c836, type: 3}
+    - {fileID: 21300000, guid: 122c7477dfb10414da0646276cbe854f, type: 3}
+    - {fileID: 21300000, guid: 0ad9b58b3ed83486289d80bf362b1278, type: 3}
+    tint: {r: 1, g: 0.93, b: 0.78, a: 1}
   secondsBetween: 0.9
   riseSpeed: 3.5
   heightRange: {x: 3, y: 7}
@@ -8712,43 +8720,43 @@ MonoBehaviour:
   - title: Mainaka's Blessing
     story: Rest on the golden mountain
     chapter: 1
-    appearAtMeters: 130
+    appearAtMeters: 180
     requires: -1
     icon: {fileID: 21300000, guid: cf289838a4936483c8d8f57b7ce72bf8, type: 3}
   - title: Lankini's Gate
     story: Slip into the golden city
     chapter: 2
-    appearAtMeters: 280
+    appearAtMeters: 430
     requires: -1
     icon: {fileID: 21300000, guid: f1c6cbaccb2714cfa86624f72246aeab, type: 3}
   - title: Ring for Sita
     story: Give Rama's ring to Sita
     chapter: 3
-    appearAtMeters: 430
+    appearAtMeters: 730
     requires: 0
     icon: {fileID: 21300000, guid: 95ffedca8f59f4d3aa8d9f87b95e8512, type: 3}
   - title: Hanuman's Gada
     story: Stand against Ravana's army
     chapter: 4
-    appearAtMeters: 630
+    appearAtMeters: 1030
     requires: -1
     icon: {fileID: 21300000, guid: 974eb3757f8184e06ae5cad681dfe8e0, type: 3}
   - title: Light the Fire
     story: Set Lanka ablaze with your burning tail
     chapter: 5
-    appearAtMeters: 880
+    appearAtMeters: 1430
     requires: -1
     icon: {fileID: 21300000, guid: 5bf236c973d1a4ce8990068d575a9244, type: 3}
   - title: Sanjeevani
     story: Carry the healing herb to Lakshmana
     chapter: 6
-    appearAtMeters: 1180
+    appearAtMeters: 1830
     requires: -1
     icon: {fileID: 21300000, guid: 88e1f3b5238ec4ce3a70d6959d0a3cde, type: 3}
   - title: Temple Bell
     story: Ring the bell of victory
     chapter: 7
-    appearAtMeters: 1530
+    appearAtMeters: 2330
     requires: -1
     icon: {fileID: 21300000, guid: c5377d88cb7574b18a51c1a00293093a, type: 3}
   gameCamera: {fileID: 561105923}

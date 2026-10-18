@@ -16,16 +16,17 @@ A devotional endless-faller for iOS and Android, built in Unity. Hanuman leaps a
 
 ## The journey
 
-| Chapter | Starts at | Milestone to collect |
+| Level | Starts at | Milestone to collect |
 |---|---|---|
-| Kishkindha | 0 m | Rama's Ring (appears by 20 m) |
-| The Great Leap | 100 m | Mainaka's Blessing |
-| Lanka | 250 m | Lankini's Gate |
-| Ashoka Vatika | 400 m | Ring for Sita (needs Rama's Ring from the same run) |
-| Rakshasa Battle | 600 m | Hanuman's Gada |
-| Lanka Burns | 850 m | Light the Fire |
-| Sanjeevani | 1150 m | Sanjeevani herb |
-| Victory | 1500 m | Temple Bell |
+| Hanuman Leaves in Search of Sita | 0 m | Rama's Ring (appears by 20 m) |
+| The Great Leap | 150 m | Mainaka's Blessing |
+| The Golden City of Ravana | 400 m | Lankini's Gate |
+| The Search for Sita | 700 m | Ring for Sita (needs Rama's Ring from the same run) |
+| Rakshasa Battle | 1000 m | Hanuman's Gada |
+| Lanka Burns | 1400 m | Light the Fire |
+| The Mountain of Healing Herbs | 1800 m | Sanjeevani herb |
+| Victory · Jai Shri Ram | 2300 m | Temple Bell |
+| Infinite Ram | 2500 m + | Endless: keep flying |
 
 Distances use the in-game **METERS** counter. Each chapter changes the sky and the scenery drifting past, and shows a banner. A missed milestone comes back about 60 m later while its chapter lasts. Completed milestones are saved and shown on the main menu's **JOURNEY** panel, next to a "Next goal" line under the title.
 

@@ -50,7 +50,7 @@ Optional extras in Unity:
 - Confirm in writing that the Muse-generated images (menu background, player) may be used commercially.
 
 ## Journey and milestones
-- Chapters follow the METERS counter: 0 / 100 / 250 / 400 / 600 / 850 / 1150 / 1500 m (`chapterManager.DefaultChapters`).
+- Levels follow the METERS counter: 0 / 150 / 400 / 700 / 1000 / 1400 / 1800 / 2300 m, then the endless Infinite Ram from 2500 m (`chapterManager.DefaultChapters`). The start screen's CHAPTERS panel lists them as text rows (`Panel/LevelRows` in start.unity).
 - One milestone per chapter (`ramayanaMilestones.Defaults`). Saved as PlayerPrefs `Milestone_0` to `Milestone_7`; delete them to reset.
 - The main menu shows the next goal under the title, plus a JOURNEY panel (`ramayanaJourneyMenu.cs`, built at runtime).
 - The sky and drifting scenery change per chapter (`ramayanaBackdrop.chapterScenery`). The old neon ColorCycler on the gameplay camera is disabled.
