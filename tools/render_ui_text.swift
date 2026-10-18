@@ -40,6 +40,7 @@ let LABELS: [Label] = [
     Label(file: "start3Anim/Last Best 2.png", text: "BEST", top: white.0, bottom: white.1),
     Label(file: "startStuff/loading.png", text: "LOADING", top: white.0, bottom: white.1),
     Label(file: "startStuff/levels.png", text: "CHAPTERS", top: white.0, bottom: white.1),
+    Label(file: "startStuff/gemshop.png", text: "GEMS SHOP", top: white.0, bottom: white.1),
     Label(file: "startStuff/expert.png", text: "EXPERT", top: white.0, bottom: white.1),
     Label(file: "startStuff/610 - Crust.png", text: "100 m · GREAT LEAP", top: white.0, bottom: white.1),
     Label(file: "startStuff/1520 - Seismic.png", text: "250 m · LANKA", top: white.0, bottom: white.1),
