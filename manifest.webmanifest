@@ -1,0 +1,12 @@
+{
+  "name": "Hanuman Dive",
+  "short_name": "Hanuman Dive",
+  "description": "Leap with Hanuman across the ocean to Lanka.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#1a0d05",
+  "theme_color": "#1a0d05",
+  "icons": [{ "src": "hanuman.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }]
+}
