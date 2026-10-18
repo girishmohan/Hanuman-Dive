@@ -14,6 +14,8 @@ public class ramayanaJourneyMenu : MonoBehaviour
     public Sprite[] milestoneIcons;
     [Tooltip("Line under the title that shows the next goal.")]
     public Text nextGoalText;
+    [Tooltip("Credit to the original game, shown on the menu and the Journey panel.")]
+    public string credit = "Based on Hyper Dive by Prajwal V";
 
     private static readonly Color Gold = new Color(1f, 0.82f, 0.30f);
     private static readonly Color Cream = new Color(1f, 0.95f, 0.85f);
@@ -41,6 +43,7 @@ public class ramayanaJourneyMenu : MonoBehaviour
         }
 
         BuildButton();
+        BuildMenuCredit();
         panel = BuildPanel(chapters, milestones, best);
         panel.SetActive(false);
     }
@@ -61,6 +64,16 @@ public class ramayanaJourneyMenu : MonoBehaviour
         b.targetGraphic = bg;
         b.onClick.AddListener(Open);
         Label(rt, "JOURNEY", 40, Gold, TextAnchor.MiddleCenter);
+    }
+
+    private void BuildMenuCredit()
+    {
+        RectTransform rt = NewRect("Credit", transform);
+        rt.anchorMin = new Vector2(0f, 0f); rt.anchorMax = new Vector2(1f, 0f);
+        rt.pivot = new Vector2(0.5f, 0f);
+        rt.anchoredPosition = new Vector2(0f, 24f);
+        rt.sizeDelta = new Vector2(-40f, 44f);
+        Label(rt, credit, 24, new Color(1f, 0.95f, 0.85f, 0.85f), TextAnchor.MiddleCenter);
     }
 
     private GameObject BuildPanel(RamayanaChapter[] chapters, RamayanaMilestone[] milestones, float best)
@@ -117,9 +130,16 @@ public class ramayanaJourneyMenu : MonoBehaviour
             Label(bottom, collected ? "DONE  " + goal : goal, 26, collected ? Done : (reached ? Cream : Dim), TextAnchor.MiddleLeft);
         }
 
+        RectTransform creditRt = NewRect("Credit", root);
+        creditRt.anchorMin = new Vector2(0f, 0f); creditRt.anchorMax = new Vector2(1f, 0f);
+        creditRt.pivot = new Vector2(0.5f, 0f);
+        creditRt.anchoredPosition = new Vector2(0f, 30f);
+        creditRt.sizeDelta = new Vector2(-40f, 40f);
+        Label(creditRt, credit, 24, new Color(1f, 0.95f, 0.85f, 0.7f), TextAnchor.MiddleCenter);
+
         RectTransform close = NewRect("Close", root);
         close.anchorMin = close.anchorMax = new Vector2(0.5f, 0f);
-        close.anchoredPosition = new Vector2(0f, 110f);
+        close.anchoredPosition = new Vector2(0f, 120f);
         close.sizeDelta = new Vector2(260f, 84f);
         Image closeBg = close.gameObject.AddComponent<Image>();
         closeBg.color = new Color(0.95f, 0.55f, 0.15f, 0.95f);
