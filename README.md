@@ -12,6 +12,9 @@ A devotional endless-faller for iOS and Android, built in Unity. Hanuman leaps a
   <img src="images/forms_shop.png" width="200" alt="AVATAR shop with Hanuman avatars">
 </p>
 
+**▶ Play in your browser: https://girishmohan.github.io/Hanuman-Dive/**
+On a phone, drag to steer. On a computer, use the mouse or the ← → arrow keys.
+
 > Work in progress. This game is a fork of [Hyper Dive](https://github.com/Prajwalvv/Hyper-Dive) by **Prajwalvv**, re-themed around the Ramayana. Full credit for the original game goes to him (see [Credits](#credits)).
 
 ## The journey
@@ -39,6 +42,7 @@ Distances use the in-game **METERS** counter. Each chapter changes the sky and t
   - Ocean rocks.
   - Mainaka Peak: a golden pickup that restores energy.
 - **Rakshasas.** Ravana's demon warriors weave upward toward Hanuman from about 12 seconds into every run. Each bump costs 5% energy.
+- **Vanara allies.** Angada, a vanara archer and Jambavan rise between the obstacles every 15 to 25 seconds. Meet one for +10% energy and a cheer.
 - **The original obstacles** are still here: spiked mines, saw blades and canyon walls. The mines hold off for the first 8 seconds.
 - **Eight Hanuman avatars** to unlock with gems in the **AVATAR** shop. Each is the same Hanuman with a different aura.
 - **Chapter scenery.** The sky and drifting silhouettes follow the story: palms in Kishkindha, waves over the ocean, towers and flags in Lanka, Ashoka trees, flames as Lanka burns, herb mountains, and temples, diyas and bells for Victory.
@@ -72,6 +76,7 @@ Ads and in-app purchases are switched off for now. Their plugins are parked in `
 | Milestones | `scripts/ramayanaMilestones.cs` |
 | Main-menu Journey panel and next goal | `scripts/ramayanaJourneyMenu.cs` |
 | Rakshasas | `scripts/ramayanaDemons.cs` |
+| Vanara allies | `scripts/ramayanaVanaras.cs` |
 | Drifting scenery | `scripts/ramayanaBackdrop.cs` |
 | Hanuman, steering, Rama Naam energy | `scripts/move.cs` |
 | Safe-area handling for notches | `scripts/safeAreaFitter.cs` |
@@ -89,6 +94,11 @@ These scripts are in `tools/` and run on macOS:
 | `swift tools/make_hanuman_forms.swift` | The eight Hanuman avatars |
 | `swift tools/make_ramayana_sprites.swift` | Scenery silhouettes and milestone icons (the rakshasa and character art comes from Muse) |
 | `python3 tools/make_ramayana_music.py` | The Raag Yaman theme loop |
+
+## Web version
+
+1. In Unity, choose **Tools → Hanuman Dive → Build WebGL**. This writes `WebBuild/` using the portrait page template in `Assets/WebGLTemplates/HanumanDive`.
+2. Run `tools/publish_web.sh`. It copies the build to the `gh-pages` branch, which GitHub Pages serves.
 
 ## Before publishing
 

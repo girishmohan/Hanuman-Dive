@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a0d05">
+    <meta name="description" content="Hanuman Dive: leap with Hanuman across the ocean to Lanka. A devotional endless-faller inspired by the Ramayana.">
+    <link rel="icon" href="hanuman.png">
+    <link rel="apple-touch-icon" href="hanuman.png">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #1a0d05; overflow: hidden; overscroll-behavior: none;
+                   touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+      #stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+      #unity-canvas { display: block; background: #1a0d05; touch-action: none; outline: none; }
+      #loader { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                gap: 18px; background: radial-gradient(circle at 50% 40%, #4a2a10 0%, #1a0d05 70%);
+                font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #ffd36b; transition: opacity .4s; }
+      #loader img { width: min(42vw, 200px); filter: drop-shadow(0 0 18px rgba(255, 200, 90, .55)); animation: bob 2.4s ease-in-out infinite; }
+      #title { font-size: clamp(26px, 7vw, 40px); font-weight: 800; letter-spacing: 1px; text-shadow: 0 3px 0 #4a1e05; }
+      #bar { width: min(64vw, 280px); height: 10px; border-radius: 5px; background: #3a2412; overflow: hidden; }
+      #fill { height: 100%; width: 0; background: linear-gradient(90deg, #ff9a2e, #ffd36b); transition: width .2s; }
+      #hint { color: #f2e2c8; font-size: 14px; opacity: .85; text-align: center; padding: 0 24px; }
+      #error { color: #ffb4a0; }
+      @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    </style>
+  </head>
+  <body>
+    <div id="stage"><canvas id="unity-canvas" tabindex="-1"></canvas></div>
+    <div id="loader">
+      <img src="hanuman.png" alt="">
+      <div id="title">HANUMAN DIVE</div>
+      <div id="bar"><div id="fill"></div></div>
+      <div id="hint">Drag or use ← → to steer · Jai Shri Ram</div>
+    </div>
+    <script>
+      // The game is designed for a portrait phone screen: fill phones, and show a
+      // centred portrait column on wide screens so the UI keeps its intended size.
+      var canvas = document.querySelector("#unity-canvas");
+      var ASPECT = 9 / 19.5;
+      function fit() {
+        var w = window.innerWidth, h = window.innerHeight;
+        var cw = w, ch = h;
+        if (w / h > ASPECT) { cw = Math.round(h * ASPECT); }
+        canvas.style.width = cw + "px";
+        canvas.style.height = ch + "px";
+      }
+      window.addEventListener("resize", fit);
+      window.addEventListener("orientationchange", fit);
+      fit();
+
+      var buildUrl = "Build";
+      var config = {
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+        workerUrl: buildUrl + "/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#endif
+#if MEMORY_FILENAME
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        // Sharp on phones without overworking older GPUs.
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+      };
+
+      var fill = document.querySelector("#fill");
+      var loader = document.querySelector("#loader");
+      var script = document.createElement("script");
+      script.src = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      script.onload = function () {
+        createUnityInstance(canvas, config, function (progress) {
+          fill.style.width = Math.round(progress * 100) + "%";
+        }).then(function () {
+          loader.style.opacity = 0;
+          setTimeout(function () { loader.remove(); }, 450);
+          canvas.focus();
+        }).catch(function (message) {
+          document.querySelector("#hint").innerHTML = '<span id="error">Could not start the game: ' + message + "</span>";
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

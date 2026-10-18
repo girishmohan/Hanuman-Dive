@@ -118,3 +118,6 @@ Library/**/*.resource
 /hyper\ dive/[Bb]uilds/
 /hyper\ dive/[Ll]ogs/
 /hyper\ dive/[Uu]ser[Ss]ettings/
+
+# Browser build output (published on the gh-pages branch)
+/WebBuild/

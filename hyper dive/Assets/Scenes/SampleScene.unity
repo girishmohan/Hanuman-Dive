@@ -8508,6 +8508,7 @@ GameObject:
   - component: {fileID: 1700000006}
   - component: {fileID: 1700000005}
   - component: {fileID: 1700000007}
+  - component: {fileID: 1700000008}
   m_Layer: 0
   m_Name: RamayanaDirector
   m_TagString: Untagged
@@ -8774,6 +8775,36 @@ MonoBehaviour:
   retryAfterMeters: 60
   playAreaHalfWidth: 3.8
   sortingOrder: 7
+--- !u!114 &1700000008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbfeeade632849999f3ca081fedf6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 561105923}
+  allies:
+  - name: Angada
+    cheer: The prince of Kishkindha cheers you on
+    sprite: {fileID: 21300000, guid: 84bc47eb15c7f4049be2b5f788c1b2ca, type: 3}
+  - name: Vanara Archer
+    cheer: Rama's army covers your flight
+    sprite: {fileID: 21300000, guid: 0fc36a98c0ad94ec0b521fedc270ee61, type: 3}
+  - name: Jambavan
+    cheer: '"Remember your strength, Hanuman!"'
+    sprite: {fileID: 21300000, guid: 9f8623714543949b48be0bb1056358f5, type: 3}
+  firstAppearSeconds: 8
+  secondsBetween: {x: 15, y: 25}
+  energyBoost: 10
+  riseSpeed: 8
+  height: 2.4
+  playAreaHalfWidth: 3.8
+  sortingOrder: 6
 --- !u!1 &1717795543
 GameObject:
   m_ObjectHideFlags: 0
