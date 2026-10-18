@@ -102,10 +102,11 @@ These scripts are in `tools/` and run on macOS:
 
 ## Before publishing
 
-- [ ] Get Prajwalvv's permission to publish a game based on Hyper Dive, and credit him in the app and the store listing.
-- [ ] Confirm the Muse-generated artwork (menu background, Hanuman, Rama & Sita, Menaka, rakshasas) may be used commercially.
-- [ ] Set your own bundle ID, company name and app name (Player Settings).
-- [ ] Re-enable current ad and IAP SDKs with your own IDs.
+- [x] Permission from Prajwalvv to publish a game based on Hyper Dive (given; record kept).
+- [ ] Credit Prajwalvv inside the game (and on any store listing).
+- [x] Muse terms allow commercial use of the generated artwork (terms saved).
+- [x] `Deadly Hazards & Obstacles` art pack is a free asset.
+- [ ] For the App Store only: set your own bundle ID and company name, and re-enable current ad and IAP SDKs with your own IDs.
 
 ## Credits
 
@@ -117,4 +118,4 @@ These scripts are in `tools/` and run on macOS:
 
 ## License
 
-The original Hyper Dive README states an MIT License, but its repository has no LICENSE file. Please check with the original author before reusing or publishing this code.
+Hanuman Dive is published with the permission of Prajwalvv, the author of the original Hyper Dive. The original Hyper Dive README states an MIT License, but its repository has no LICENSE file, so ask before reusing this code in another project.
