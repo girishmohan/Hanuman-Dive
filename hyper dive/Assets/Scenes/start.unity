@@ -2033,6 +2033,7 @@ GameObject:
   - component: {fileID: 951428047}
   - component: {fileID: 951428049}
   - component: {fileID: 951428048}
+  - component: {fileID: 951428050}
   m_Layer: 5
   m_Name: bG
   m_TagString: Untagged
@@ -2072,14 +2073,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 13e95f75856474e58a4a942e082d4688, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7a306eab126046fb993c2321464c1b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2097,6 +2098,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951428046}
   m_CullTransparentMesh: 0
+--- !u!114 &951428050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951428046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 4
+  m_AspectRatio: 0.5
 --- !u!1 &953928058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3156,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 88e1f3b5238ec4ce3a70d6959d0a3cde, type: 3}
   - {fileID: 21300000, guid: d7417f79b70814ee6bbe3bdee8fcb85a, type: 3}
   nextGoalText: {fileID: 1229167147}
+  panelBackground: {fileID: 21300000, guid: 653df57fbd8ff4071987bea764ec582c, type: 3}
+  credit: Based on Hyper Dive by Prajwal V
 --- !u!1 &1274049410
 GameObject:
   m_ObjectHideFlags: 0

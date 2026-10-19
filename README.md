@@ -31,7 +31,7 @@ On a phone, drag to steer. On a computer, use the mouse or the ← → arrow key
 | Victory · Jai Shri Ram | 2300 m | Rama and Sita Reunited |
 | Infinite Ram | 2500 m + | Endless: keep flying |
 
-Distances use the in-game **METERS** counter. Each chapter changes the sky and the scenery drifting past, and shows a banner. A missed milestone comes back about 60 m later while its chapter lasts. Completed milestones are saved and shown on the main menu's **JOURNEY** panel, next to a "Next goal" line under the title.
+Distances use the in-game **METERS** counter. Each chapter has its own painted background (cross-fading as you enter it), drifting scenery and a banner. A missed milestone comes back about 60 m later while its chapter lasts. Completed milestones are saved and shown on the main menu's **JOURNEY** panel, next to a "Next goal" line under the title.
 
 ## What's in the game
 

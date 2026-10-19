@@ -14,6 +14,8 @@ public class ramayanaJourneyMenu : MonoBehaviour
     public Sprite[] milestoneIcons;
     [Tooltip("Line under the title that shows the next goal.")]
     public Text nextGoalText;
+    [Tooltip("Painting behind the Journey panel (dimmed for readability).")]
+    public Sprite panelBackground;
     [Tooltip("Credit to the original game, shown on the menu and the Journey panel.")]
     public string credit = "Based on Hyper Dive by Prajwal V";
 
@@ -82,6 +84,24 @@ public class ramayanaJourneyMenu : MonoBehaviour
         Stretch(root);
         Image shade = root.gameObject.AddComponent<Image>();
         shade.color = new Color(0.08f, 0.04f, 0.02f, 0.97f);
+        if (panelBackground != null)
+        {
+            // Painting behind the list, covering the screen, with a dark wash for contrast.
+            shade.color = Color.black;
+            RectTransform art = NewRect("Painting", root);
+            Stretch(art);
+            Image artImg = art.gameObject.AddComponent<Image>();
+            artImg.sprite = panelBackground;
+            artImg.raycastTarget = false;
+            AspectRatioFitter fit = art.gameObject.AddComponent<AspectRatioFitter>();
+            fit.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            fit.aspectRatio = panelBackground.rect.width / panelBackground.rect.height;
+            RectTransform wash = NewRect("Wash", root);
+            Stretch(wash);
+            Image washImg = wash.gameObject.AddComponent<Image>();
+            washImg.color = new Color(0.06f, 0.03f, 0.02f, 0.62f);
+            washImg.raycastTarget = false;
+        }
 
         int done = 0;
         for (int i = 0; i < milestones.Length; i++) if (ramayanaMilestones.IsCompleted(i)) done++;

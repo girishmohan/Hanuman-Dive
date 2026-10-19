@@ -8846,14 +8846,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 98f23fbe14dd94a2181e70650b162c00, type: 3}
   - {fileID: 21300000, guid: 627fa8f89fd094bc6ac8a236c5af5ba3, type: 3}
   - {fileID: 21300000, guid: 341fa174bfc1741bd80921606d3c3ea3, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 11db5daecced641ad9b01e684960caaa, type: 3}
+  - {fileID: 21300000, guid: 413b9349503514a6d953cd920931b5ef, type: 3}
+  - {fileID: 21300000, guid: 434d9b0ce2b404a01b922e071269c628, type: 3}
+  - {fileID: 21300000, guid: 5cc32816055f044e88a2e1114ee97529, type: 3}
+  - {fileID: 21300000, guid: 86d945bf49f9544669598c9748b35126, type: 3}
   fadeSeconds: 1.5
   dim: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   sortingOrder: -20
+  wallOpacityWithPainting: 0.4
 --- !u!1 &1717795543
 GameObject:
   m_ObjectHideFlags: 0
