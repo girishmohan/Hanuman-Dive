@@ -28,6 +28,27 @@ public static class ramayanaRunEvents
         else PlayerPrefs.SetInt("GemAmount", PlayerPrefs.GetInt("GemAmount") + amount);
     }
 
+    /// <summary>Current METERS reading (0 outside a run).</summary>
+    public static float Meters()
+    {
+        return scoreManager.instance != null ? scoreManager.instance.score : 0f;
+    }
+
+    /// <summary>
+    /// Spawn-interval multiplier for hazards: gentler opening (60% more space at the
+    /// start), easing to normal by 250 m.
+    /// </summary>
+    public static float OpeningEase()
+    {
+        return Mathf.Lerp(1.6f, 1f, Mathf.Clamp01(Meters() / 250f));
+    }
+
+    /// <summary>Hazard speed multiplier: normal until 400 m, then up to +50% by 2000 m.</summary>
+    public static float SpeedRamp()
+    {
+        return 1f + 0.5f * Mathf.Clamp01((Meters() - 400f) / 1600f);
+    }
+
     /// <summary>Shows the cause (and a tip) at the top of the Game Over screen.</summary>
     public static void ShowDeathCause(GameObject gameOverPanel)
     {

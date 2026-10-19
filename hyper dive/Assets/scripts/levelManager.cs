@@ -77,6 +77,23 @@ public class levelManager : MonoBehaviour
         //150000
         is150000Sold = PlayerPrefs.GetInt("Is150000Sold");
 
+        // Only one avatar can be worn: keep the first equipped one, clear the rest.
+        bool chosen = false;
+        foreach (string price in new[] { "2500", "5000", "7500", "15000", "50000", "75000", "100000", "150000" })
+        {
+            if (PlayerPrefs.GetInt("Is" + price + "Sold") != 1) continue;
+            if (chosen) PlayerPrefs.SetInt("Is" + price + "Sold", 0);
+            chosen = true;
+        }
+        is2500Sold = PlayerPrefs.GetInt("Is2500Sold");
+        is5000Sold = PlayerPrefs.GetInt("Is5000Sold");
+        is7500Sold = PlayerPrefs.GetInt("Is7500Sold");
+        is15000Sold = PlayerPrefs.GetInt("Is15000Sold");
+        is50000Sold = PlayerPrefs.GetInt("Is50000Sold");
+        is75000Sold = PlayerPrefs.GetInt("Is75000Sold");
+        is100000Sold = PlayerPrefs.GetInt("Is100000Sold");
+        is150000Sold = PlayerPrefs.GetInt("Is150000Sold");
+
         //skin Using Check.................................
         //2500
 
@@ -216,23 +233,26 @@ public class levelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Keep the HUD in step with the saved total.
+        int saved = PlayerPrefs.GetInt("GemAmount");
+        if (saved != coins)
+        {
+            coins = saved;
+            coinText_score.text = "" + coins;
+        }
     }
     
     
     public void AddCoins(int numberOfCoins)
     {
-        coins += numberOfCoins;
-        coinText_score.text = "" + coins.ToString();
+        // Always add to the saved total, so the HUD, shop and rewards never disagree.
+        coins = PlayerPrefs.GetInt("GemAmount") + numberOfCoins;
         PlayerPrefs.SetInt("GemAmount", coins);
-        //gemsSave();
+        coinText_score.text = "" + coins;
     }
     public void gemsSave()
     {
-        if (PlayerPrefs.GetFloat("GemAmount") > 0)
-
-            PlayerPrefs.SetFloat("GemAmount", coins);
-
+        PlayerPrefs.SetInt("GemAmount", coins);
     }
 
     public void gotoShop()

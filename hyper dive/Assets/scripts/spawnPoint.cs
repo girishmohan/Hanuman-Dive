@@ -11,7 +11,7 @@ public class spawnPoint : MonoBehaviour
         GameObject spawned = Instantiate(obstacle, transform.position, Quaternion.identity);
         // Hazards only appear if they leave Hanuman a way through (pickups are never blocked).
         obstacles hazard = spawned.GetComponent<obstacles>();
-        if (hazard != null && hazard.damage > 0 && !ramayanaSpawnGuard.Admit(spawned, hazard.speed))
+        if (hazard != null && hazard.damage > 0 && !ramayanaSpawnGuard.Admit(spawned, hazard.speed * ramayanaRunEvents.SpeedRamp()))
         {
             Destroy(spawned);
         }

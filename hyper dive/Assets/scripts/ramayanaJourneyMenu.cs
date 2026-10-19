@@ -25,6 +25,8 @@ public class ramayanaJourneyMenu : MonoBehaviour
     private static readonly Color Done = new Color(0.55f, 0.95f, 0.55f);
 
     private GameObject panel;
+    private GameObject journeyButton;
+    private GameObject levelsPanel;
 
     private void Start()
     {
@@ -45,9 +47,19 @@ public class ramayanaJourneyMenu : MonoBehaviour
         }
 
         BuildButton();
+        Transform levels = transform.Find("Panel");   // the CHAPTERS panel opened by the podium icon
+        if (levels != null) levelsPanel = levels.gameObject;
         BuildMenuCredit();
         panel = BuildPanel(chapters, milestones, best);
         panel.SetActive(false);
+    }
+
+    // The JOURNEY button would cover the CHAPTERS panel's back arrow, so hide it there.
+    private void Update()
+    {
+        if (journeyButton == null) return;
+        bool show = levelsPanel == null || !levelsPanel.activeInHierarchy;
+        if (journeyButton.activeSelf != show) journeyButton.SetActive(show);
     }
 
     public void Open() { panel.SetActive(true); panel.transform.SetAsLastSibling(); }
@@ -61,7 +73,8 @@ public class ramayanaJourneyMenu : MonoBehaviour
         rt.anchoredPosition = new Vector2(28f, -40f);
         rt.sizeDelta = new Vector2(220f, 76f);
         Image bg = rt.gameObject.AddComponent<Image>();
-        bg.color = new Color(0.30f, 0.12f, 0.03f, 0.75f);
+        bg.color = new Color(0.30f, 0.12f, 0.03f, 0.35f);
+        journeyButton = rt.gameObject;
         Button b = rt.gameObject.AddComponent<Button>();
         b.targetGraphic = bg;
         b.onClick.AddListener(Open);
@@ -109,7 +122,7 @@ public class ramayanaJourneyMenu : MonoBehaviour
         Text heading = Label(Place(root, 0f, -120f, 760f, 90f), "THE JOURNEY", 66, Gold, TextAnchor.MiddleCenter);
         heading.fontStyle = FontStyle.Bold;
         Label(Place(root, 0f, -195f, 760f, 50f),
-              "Best: " + Mathf.FloorToInt(best) + " m   ·   Milestones " + done + "/" + milestones.Length,
+              "Best: " + Mathf.FloorToInt(best) + " m   ·   Milestones collected " + done + "/" + milestones.Length,
               30, Cream, TextAnchor.MiddleCenter);
 
         const float rowHeight = 118f;
@@ -146,8 +159,10 @@ public class ramayanaJourneyMenu : MonoBehaviour
             RectTransform bottom = NewRect("Milestone", row);
             bottom.anchorMin = new Vector2(0f, 0f); bottom.anchorMax = new Vector2(1f, 0.5f);
             bottom.offsetMin = new Vector2(132f, 6f); bottom.offsetMax = new Vector2(-16f, 0f);
-            string goal = mIndex >= 0 ? milestones[mIndex].title + ": " + milestones[mIndex].story : chapters[i].subtitle;
-            Label(bottom, collected ? "DONE  " + goal : goal, 26, collected ? Done : (reached ? Cream : Dim), TextAnchor.MiddleLeft);
+            string goal = mIndex >= 0 ? milestones[mIndex].title + ": " + milestones[mIndex].story
+                                      : "Endless: no milestone, fly as far as you can";
+            string status = mIndex < 0 ? "" : collected ? "DONE  " : reached ? "Not collected yet · " : "";
+            Label(bottom, status + goal, 26, collected ? Done : (reached ? Cream : Dim), TextAnchor.MiddleLeft);
         }
 
         RectTransform creditRt = NewRect("Credit", root);

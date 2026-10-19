@@ -598,48 +598,9 @@ public class shopManager : MonoBehaviour
         
     }
 
-    public void resetPlayerPrefs()
-    {
-        gemAmount = 0;
-        
-        //2500
-        Button2500.gameObject.SetActive(true);
-        equipedButton2500.gameObject.SetActive(false);
-        boughtButton2500.gameObject.SetActive(false);
-        //5000
-        Button5000.gameObject.SetActive(true);
-        equipedButton5000.gameObject.SetActive(false);
-        boughtButton5000.gameObject.SetActive(false);
-        //7500
-        Button7500.gameObject.SetActive(true);
-        equipedButton7500.gameObject.SetActive(false);
-        boughtButton7500.gameObject.SetActive(false);
-        //15000
-        Button15000.gameObject.SetActive(true);
-        equipedButton15000.gameObject.SetActive(false);
-        boughtButton15000.gameObject.SetActive(false);
-        //50000
-        Button50000.gameObject.SetActive(true);
-        equipedButton50000.gameObject.SetActive(false);
-        boughtButton50000.gameObject.SetActive(false);
-        //75000
-        Button75000.gameObject.SetActive(true);
-        equipedButton75000.gameObject.SetActive(false);
-        boughtButton75000.gameObject.SetActive(false);
-        //100000
-        Button100000.gameObject.SetActive(true);
-        equipedButton100000.gameObject.SetActive(false);
-        boughtButton100000.gameObject.SetActive(false);
-        //150000
-        Button150000.gameObject.SetActive(true);
-        equipedButton150000.gameObject.SetActive(false);
-        boughtButton150000.gameObject.SetActive(false);
-        PlayerPrefs.DeleteAll();
-    }
-    public void add100000Gems()
-    {
-        gemAmount += 1000000;
-        PlayerPrefs.SetInt("GemAmount", gemAmount);
-    }
+    // Development-only buttons from Hyper Dive (wipe all data / add 1,000,000 gems).
+    // Disabled for release; kept so existing button references don't break.
+    public void resetPlayerPrefs() { }
+    public void add100000Gems() { }
 }
 

@@ -20,7 +20,7 @@ public class obstacles : MonoBehaviour
         //{
         //    speed += 10;
         //}
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * ramayanaRunEvents.SpeedRamp() * Time.deltaTime);
 
     }
 

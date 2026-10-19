@@ -158,6 +158,7 @@ public class chapterManager : MonoBehaviour
         RamayanaChapter chapter = chapters[index];
 
         string line = index < StoryLines.Length ? StoryLines[index] : chapter.subtitle;
+        if (index == 0 && PlayerPrefs.GetInt("RunsStarted", 0) <= hintRuns) line = "Drag left or right to steer Hanuman";
         if (index > 0 && chapterGems > 0)
         {
             ramayanaRunEvents.AwardGems(chapterGems);
