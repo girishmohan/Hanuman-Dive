@@ -17,7 +17,7 @@ public class ramayanaChapterBackground : MonoBehaviour
     [Tooltip("Behind everything else (canyon walls use -2..0, scenery -3).")]
     public int sortingOrder = -20;
     [Tooltip("While a painting shows, the old canyon walls keep this much of their opacity.")]
-    [Range(0f, 1f)] public float wallOpacityWithPainting = 0.4f;
+    [Range(0f, 1f)] public float wallOpacityWithPainting = 0.3f;
 
     // Hyper Dive's backdrop art: a solid green back plate and the canyon wall layers.
     private static readonly HashSet<string> BackPlate = new HashSet<string> { "Asset 9" };

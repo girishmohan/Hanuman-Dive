@@ -8638,7 +8638,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700000001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e1e6d5b6cfda4d08a3dfb70eed8a32f, type: 3}
   m_Name: 
@@ -8854,7 +8854,7 @@ MonoBehaviour:
   fadeSeconds: 1.5
   dim: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   sortingOrder: -20
-  wallOpacityWithPainting: 0.4
+  wallOpacityWithPainting: 0.3
 --- !u!1 &1717795543
 GameObject:
   m_ObjectHideFlags: 0
